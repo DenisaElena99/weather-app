@@ -1,0 +1,136 @@
+html, body {
+  font-size: 15px;
+  background-image: linear-gradient(to right top, #e9f2ff, #e7f3fd, #e7f4fb, #e8f4f8, #e9f4f6);
+}
+
+.container-card {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  align-items: baseline;
+
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  margin: 5rem 60rem 2rem 58rem;
+}
+
+
+.card-item {
+  display: flex;
+  font-size: 1.2rem;
+  color: #ffffff;
+  border: 1px solid transparent;
+  margin: 2rem 60rem 1rem 60rem;
+  background-image: linear-gradient(to right top, #a6c2ed, #a0caee, #9ed1ec, #a1d7e9, #a8dde5);
+  text-shadow: 2px 2px 2px #95ACD9;
+  box-shadow: 10px 6px 8px #cfcdcf;
+
+}
+
+
+.card-item img {
+  display: flex;
+  width: 5.3rem;
+  height: 5.3rem;
+
+}
+
+
+.city {
+  font-size: 2.9rem;
+  padding-top: 0rem;
+  margin-top: -2rem;
+  margin-left: -1rem;
+}
+
+.weather-description {
+  font-size: 1.5rem;
+  margin: -1rem 20rem 1rem -3rem;
+}
+
+.extra-info {
+  font-size: 1.5rem;
+  margin: -1rem 7rem 2rem -3rem;
+}
+
+
+.deg {
+  font-size: 4rem;
+  margin: -11rem -3rem -4rem 37rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+
+.feels-like {
+  padding-top: 4.2rem;
+  font-size: 1.5rem;
+  padding-left: 35rem;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin: 2rem 60rem 1rem 60rem;
+}
+
+
+input[type="text"] {
+  color: #2C0B42;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 0.6rem;
+  border: 2px solid black;
+  border-radius: 0.3rem;
+  border: 0.5px solid #CCC9CC;
+  box-shadow: 10px 6px 8px #cfcdcf;
+}
+
+
+.card-item-details {
+  display: flex;
+  flex-shrink: 2;
+  font-size: 0.9rem;
+  color: #black;
+  border: 1px solid transparent;
+  margin: -1rem 60rem 1rem 60rem;
+  background: #ffffff;
+  box-shadow: 10px 6px 8px #cfcdcf;
+}
+
+
+.table-details {
+  border-collapse: collapse;
+  width: 98%;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+.table-details tr {
+  border-bottom: 1px solid #ccc;
+}
+
+.table-details tr:last-of-type {
+  border: none;
+}
+
+.table-details td {
+  padding: 0.6rem;
+
+}
+
+
+.table-details th {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid black;
+  color: black;
+}
