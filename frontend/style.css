@@ -3,12 +3,12 @@ html, body {
   background-image: linear-gradient(to right top, #e9f2ff, #e7f3fd, #e7f4fb, #e8f4f8, #e9f4f6);
 }
 
+
 .container-card {
   display: flex;
   flex-flow: column wrap;
   align-content: flex-start;
   align-items: baseline;
-
 }
 
 
@@ -41,6 +41,7 @@ html, body {
 
 
 .city {
+  font-weight: bold;
   font-size: 2.9rem;
   padding-top: 0rem;
   margin-top: -2rem;
@@ -48,11 +49,13 @@ html, body {
 }
 
 .weather-description {
+  font-weight: normal;
   font-size: 1.5rem;
   margin: -1rem 20rem 1rem -3rem;
 }
 
 .extra-info {
+  font-weight: normal;
   font-size: 1.5rem;
   margin: -1rem 7rem 2rem -3rem;
 }
@@ -67,6 +70,7 @@ html, body {
 
 
 .feels-like {
+  font-weight: normal;
   padding-top: 4.2rem;
   font-size: 1.5rem;
   padding-left: 35rem;
@@ -85,7 +89,6 @@ input[type="text"] {
   font-size: 1.5rem;
   padding: 0.6rem;
   border: 2px solid black;
-  border-radius: 0.3rem;
   border: 0.5px solid #CCC9CC;
   box-shadow: 10px 6px 8px #cfcdcf;
 }
@@ -117,9 +120,11 @@ input[type="text"] {
   border-bottom: 1px solid #ccc;
 }
 
+
 .table-details tr:last-of-type {
   border: none;
 }
+
 
 .table-details td {
   padding: 0.6rem;
