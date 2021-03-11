@@ -1,6 +1,24 @@
+@font-face {
+    font-family: "myfont-regular";
+    src: url("fonts/DINNextLTPro-Regular.woff") format('woff')
+}
+
+
+@font-face {
+    font-family: "myfont-medium";
+    src: url("fonts/DINNextLTPro-Medium.woff") format('woff');
+}
+
+
+@font-face {
+    font-family: "myfont-bold";
+    src: url("fonts/DINNextLTPro-Bold.woff") format('woff');
+}
+
+
 html, body {
   font-size: 15px;
-  background-image: linear-gradient(to right top, #e9f2ff, #e7f3fd, #e7f4fb, #e8f4f8, #e9f4f6);
+  background-image: #f3f8ff;
 }
 
 
@@ -15,66 +33,169 @@ html, body {
 .header {
   display: flex;
   align-items: center;
-  margin: 5rem 60rem 2rem 58rem;
+  font-family: 'myfont-regular';
+  margin: 5rem 60rem 3rem 58rem;
+}
+
+
+.app-name  {
+  font-family: 'myfont-regular';
+  font-size: 2rem;
+}
+
+
+.logo {
+  background: #f6e1d3;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
+  margin-left: 1.8rem;
 }
 
 
 .card-item {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* align-items: center; */
   font-size: 1.2rem;
   color: #ffffff;
-  border: 1px solid transparent;
+  border: none;
   margin: 2rem 60rem 1rem 60rem;
-  background-image: linear-gradient(to right top, #a6c2ed, #a0caee, #9ed1ec, #a1d7e9, #a8dde5);
+  background-image: linear-gradient(to bottom right, #b9d5f7, #87b0db);
   text-shadow: 2px 2px 2px #95ACD9;
-  box-shadow: 10px 6px 8px #cfcdcf;
+  box-shadow: 4px 4px 9px #cfcdcf;
 
 }
 
+/* .card-item img {
+  width: 6rem;
+  height: 6rem;
+  padding-bottom: 4.7rem;
+} */
 
-.card-item img {
-  display: flex;
-  width: 5.3rem;
-  height: 5.3rem;
-
+.card-item > img {
+    width: 10%;
+    align-self: flex-start;
 }
 
-
+/*
 .city {
-  font-weight: bold;
   font-size: 2.9rem;
   padding-top: 0rem;
   margin-top: -2rem;
-  margin-left: -1rem;
+} */
+
+.card-item > .city-name {
+  width: 20%;
 }
+
+
+.city-name {
+  align-self: baseline;
+  font-family: 'myfont-medium';
+  font-size: 2.9rem;
+  padding-top: 1rem;
+  /* margin: 4rem 2rem 2rem 0rem; */
+}
+
+
+.card-item > .country {
+  width: 50%;
+}
+
+.country {
+  align-self: baseline;
+  font-family: 'myfont-bold';
+  font-size: 1.5rem;
+  padding-left: 4rem;
+  /* margin: -4.3rem 1rem 3rem 13.6rem; */
+}
+
+
+.card-item >.weather-description {
+  width: 40%;
+}
+
 
 .weather-description {
-  font-weight: normal;
+  font-family: 'myfont-regular';
   font-size: 1.5rem;
-  margin: -1rem 20rem 1rem -3rem;
-}
-
-.extra-info {
-  font-weight: normal;
-  font-size: 1.5rem;
-  margin: -1rem 7rem 2rem -3rem;
+  padding-left: 1rem;
+  /* padding-top: 2rem; */
+  padding-right: 15rem;
+  /* margin: -1rem 24rem 1rem -5rem; */
 }
 
 
-.deg {
-  font-size: 4rem;
-  margin: -11rem -3rem -4rem 37rem;
-  padding-right: 1rem;
+.card-item >.air-description {
+  width: 40%;
+  order: 5;
+}
+
+.air-description {
+  align-self: flex-end;
   padding-bottom: 1rem;
+  padding-left: 1rem;
+  font-family: 'myfont-regular';
+  margin-top: -3rem;
+  /* margin: -1rem 26rem 1rem -5rem; */
+  font-size: 1.5rem;
 }
 
+
+.card-item >.temperature {
+  width: 10%;
+  order: 4;
+}
+
+.temperature {
+  align-self: baseline;
+  text-align: right;
+  font-family: 'myfont-medium';
+  /* margin: -9rem 1rem -5rem 35.5rem; */
+  font-size: 4rem;
+}
+
+
+.card-item >.feels-like {
+  width: 55%;
+  order: 7;
+}
 
 .feels-like {
-  font-weight: normal;
-  padding-top: 4.2rem;
+  text-align: right;
+  font-family: 'myfont-regular';
+  /* margin: 5rem 0rem 3rem 33rem; */
   font-size: 1.5rem;
-  padding-left: 35rem;
 }
+
+.card-item > .arrow {
+  order: 9;
+}
+
+
+.arrow {
+  height: 0.6rem;
+  width: 0.6rem;
+  border-style: solid;
+  border-color: white;
+  border-width: 0px 3px 3px 0px;
+  transform: rotate(-135deg);
+  margin: -3rem 1rem 1.5rem 17rem;
+}
+
+
+/* .button-delete {
+    position: relative;
+    height: 1rem;
+    width: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
 
 .search-bar {
   display: flex;
@@ -85,34 +206,33 @@ html, body {
 
 input[type="text"] {
   color: #2C0B42;
+  font-family: 'myfont-regular';
   width: 100%;
   font-size: 1.5rem;
   padding: 0.6rem;
   border: 2px solid black;
-  border: 0.5px solid #CCC9CC;
-  box-shadow: 10px 6px 8px #cfcdcf;
+  border: 0.5px solid #c8c8c8;
+  box-shadow: 4px 4px 9px #cfcdcf;
 }
 
 
 .card-item-details {
   display: flex;
   flex-shrink: 2;
-  font-size: 0.9rem;
+  font-family: 'myfont-regular';
   color: #black;
   border: 1px solid transparent;
   margin: -1rem 60rem 1rem 60rem;
   background: #ffffff;
-  box-shadow: 10px 6px 8px #cfcdcf;
+  box-shadow: 4px 4px 9px #cfcdcf;
 }
 
 
 .table-details {
   border-collapse: collapse;
-  width: 98%;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 1.1rem;
+  margin: 0.8rem 1rem 1rem 1rem;
 }
 
 
