@@ -24,22 +24,18 @@ html, body {
 
 .container-card {
   display: flex;
-  flex-flow: column wrap;
-  align-content: flex-start;
-  align-items: baseline;
 }
 
 
 .header {
   display: flex;
   align-items: center;
-  font-family: 'myfont-regular';
   margin: 5rem 60rem 3rem 58rem;
 }
 
 
 .app-name  {
-  font-family: 'myfont-regular';
+  font-family: 'myfont-medium';
   font-size: 2rem;
 }
 
@@ -58,34 +54,21 @@ html, body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* align-items: center; */
   font-size: 1.2rem;
   color: #ffffff;
   border: none;
   margin: 2rem 60rem 1rem 60rem;
   background-image: linear-gradient(to bottom right, #b9d5f7, #87b0db);
-  text-shadow: 2px 2px 2px #95ACD9;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 4px 4px 9px #cfcdcf;
 
 }
 
-/* .card-item img {
-  width: 6rem;
-  height: 6rem;
-  padding-bottom: 4.7rem;
-} */
 
 .card-item > img {
     width: 10%;
-    align-self: flex-start;
 }
 
-/*
-.city {
-  font-size: 2.9rem;
-  padding-top: 0rem;
-  margin-top: -2rem;
-} */
 
 .card-item > .city-name {
   width: 20%;
@@ -97,7 +80,6 @@ html, body {
   font-family: 'myfont-medium';
   font-size: 2.9rem;
   padding-top: 1rem;
-  /* margin: 4rem 2rem 2rem 0rem; */
 }
 
 
@@ -110,96 +92,83 @@ html, body {
   font-family: 'myfont-bold';
   font-size: 1.5rem;
   padding-left: 4rem;
-  /* margin: -4.3rem 1rem 3rem 13.6rem; */
 }
 
 
 .card-item >.weather-description {
   width: 40%;
+  order: 5;
 }
 
 
 .weather-description {
   font-family: 'myfont-regular';
+  text-align: left;
   font-size: 1.5rem;
   padding-left: 1rem;
-  /* padding-top: 2rem; */
-  padding-right: 15rem;
-  /* margin: -1rem 24rem 1rem -5rem; */
+  margin-top: 0.5rem;
 }
 
 
 .card-item >.air-description {
-  width: 40%;
-  order: 5;
+  width: 100%;
+  order: 7;
 }
 
 .air-description {
-  align-self: flex-end;
+  text-align: left;
   padding-bottom: 1rem;
   padding-left: 1rem;
   font-family: 'myfont-regular';
-  margin-top: -3rem;
-  /* margin: -1rem 26rem 1rem -5rem; */
   font-size: 1.5rem;
 }
 
 
 .card-item >.temperature {
-  width: 10%;
+  width: 90%;
   order: 4;
 }
 
 .temperature {
-  align-self: baseline;
   text-align: right;
   font-family: 'myfont-medium';
-  /* margin: -9rem 1rem -5rem 35.5rem; */
   font-size: 4rem;
+  margin: -4rem 0rem -2rem 3.9rem;
 }
 
 
 .card-item >.feels-like {
   width: 55%;
-  order: 7;
+  order: 6;
 }
 
 .feels-like {
   text-align: right;
   font-family: 'myfont-regular';
-  /* margin: 5rem 0rem 3rem 33rem; */
+  margin-top: 0.5rem;
   font-size: 1.5rem;
 }
 
+
 .card-item > .arrow {
-  order: 9;
+  order: 8;
 }
 
 
 .arrow {
+  margin: auto;
+  margin-top: -2rem;
   height: 0.6rem;
   width: 0.6rem;
   border-style: solid;
   border-color: white;
   border-width: 0px 3px 3px 0px;
   transform: rotate(-135deg);
-  margin: -3rem 1rem 1.5rem 17rem;
 }
-
-
-/* .button-delete {
-    position: relative;
-    height: 1rem;
-    width: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-} */
 
 
 .search-bar {
   display: flex;
-  align-items: center;
   margin: 2rem 60rem 1rem 60rem;
 }
 
@@ -218,10 +187,9 @@ input[type="text"] {
 
 .card-item-details {
   display: flex;
-  flex-shrink: 2;
   font-family: 'myfont-regular';
   color: #black;
-  border: 1px solid transparent;
+  border: none;
   margin: -1rem 60rem 1rem 60rem;
   background: #ffffff;
   box-shadow: 4px 4px 9px #cfcdcf;
@@ -248,7 +216,6 @@ input[type="text"] {
 
 .table-details td {
   padding: 0.6rem;
-
 }
 
 
