@@ -84,18 +84,19 @@ input[type="text"] {
   font-size: 1.2rem;
   color: #ffffff;
   border: none;
-  /* margin: 2rem 60rem 1rem 60rem; */
   background-image: linear-gradient(to bottom right, #b9d5f7, #87b0db);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 4px 4px 9px #cfcdcf;
 }
 
+
 .first-line {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  flex-basis: 100%;
   align-items: center;
 }
+
 
 .img-weather {
   margin: -0.8rem -0.2rem -1rem 0rem;
@@ -105,27 +106,28 @@ input[type="text"] {
 .city-name {
   font-family: 'myfont-medium';
   font-size: 2.9rem;
-  /* align-self: center; */
-  /* padding-top: 1rem; */
+  padding-right: 1rem;
 }
 
 
 .country {
-  align-self: center;
   font-family: 'myfont-bold';
   font-size: 1.5rem;
-  padding-left: 0.7rem;
+  margin-bottom: -0.5rem;
 }
 
 
 .temperature {
-  align-self: right;
+  margin-left: auto;
+  padding-top: 2rem;
+  padding-right: 1.5rem;
   font-family: 'myfont-medium';
   font-size: 4rem;
 }
 
 
 .second-line {
+  flex-basis: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -146,30 +148,43 @@ input[type="text"] {
   flex: 1;
   text-align: right;
   font-family: 'myfont-regular';
+  padding-right: 1.5rem;
   margin-top: 0.5rem;
   font-size: 1.5rem;
+}
+
+
+.third-line {
+  display: flex;
+  flex-basis: 100%;
 }
 
 
 .air-description {
   width: 100%;
   text-align: left;
-  padding-bottom: 1rem;
   padding-left: 1rem;
   font-family: 'myfont-regular';
   font-size: 1.5rem;
 }
 
 
+.fourth-line {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+
 .arrow {
-  margin: auto;
-  margin-top: -2rem;
   height: 0.6rem;
   width: 0.6rem;
   border-style: solid;
   border-color: white;
   border-width: 0px 3px 3px 0px;
   transform: rotate(-135deg);
+  margin-top: -0.5rem;
 }
 
 
@@ -178,7 +193,6 @@ input[type="text"] {
   font-family: 'myfont-regular';
   color: #black;
   border: none;
-  /* margin: -1rem 60rem 1rem 60rem; */
   background: #ffffff;
   box-shadow: 4px 4px 9px #cfcdcf;
 }
