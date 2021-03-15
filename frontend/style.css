@@ -99,7 +99,7 @@ input[type="text"] {
 
 
 .img-weather {
-  margin: -0.8rem -0.2rem -1rem 0rem;
+  margin: -1rem -0.2rem -1rem 0rem;
 }
 
 
@@ -124,6 +124,41 @@ input[type="text"] {
   font-family: 'myfont-medium';
   font-size: 4rem;
 }
+
+
+.close-button {
+  display: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: -3rem;
+  padding-left: 1.5rem;
+}
+
+
+.close-button:before, .close-button:after {
+  position: absolute;
+  content: ' ';
+  height: 1rem;
+  width: 0.2rem;
+  margin-right: -2rem;
+  background-color: black;
+}
+
+
+.close-button:before {
+  transform: rotate(45deg);
+}
+
+
+.close-button:after {
+  transform: rotate(-45deg);
+}
+
+
+.card-item:hover .close-button {
+  display: inline-block;
+}
+
 
 
 .second-line {
