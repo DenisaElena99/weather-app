@@ -1,24 +1,32 @@
 @font-face {
-    font-family: "myfont-regular";
-    src: url("fonts/DINNextLTPro-Regular.woff") format('woff')
+    font-family: "DINNextLTPro";
+    src: url(fonts/DINNextLTPro-Regular.woff) format('woff')
 }
 
 
 @font-face {
-    font-family: "myfont-medium";
-    src: url("fonts/DINNextLTPro-Medium.woff") format('woff');
+    font-family: "DINNextLTPro";
+    src: url(fonts/DINNextLTPro-Medium.woff) format('woff');
+    font-weight: 600;
 }
 
 
 @font-face {
-    font-family: "myfont-bold";
-    src: url("fonts/DINNextLTPro-Bold.woff") format('woff');
+    font-family: "DINNextLTPro";
+    src: url(fonts/DINNextLTPro-Bold.woff) format('woff');
+    font-weight: bold;
 }
 
 
 html, body {
   font-size: 15px;
+  font-family: 'DINNextLTPro';
   background-image: #f3f8ff;
+}
+
+
+input, button {
+  font-family: 'DINNextLTPro';
 }
 
 
@@ -31,11 +39,6 @@ html, body {
 }
 
 
-.container-card {
-  display: flex;
-}
-
-
 .header {
   display: flex;
   align-items: center;
@@ -44,13 +47,13 @@ html, body {
 }
 
 
-.app-name  {
-  font-family: 'myfont-medium';
+.header__app-name  {
+  font-weight: 600;
   font-size: 2rem;
 }
 
 
-.logo {
+.header__logo {
   background: #f6e1d3;
   border-radius: 50%;
   width: 4rem;
@@ -67,7 +70,6 @@ html, body {
 
 input[type="text"] {
   color: #2C0B42;
-  font-family: 'myfont-regular';
   width: 100%;
   font-size: 1.5rem;
   padding: 0.6rem;
@@ -78,9 +80,6 @@ input[type="text"] {
 
 
 .card-item {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   font-size: 1.2rem;
   color: #ffffff;
   border: none;
@@ -90,52 +89,52 @@ input[type="text"] {
 }
 
 
-.first-line {
+.main-info {
   display: flex;
   flex-wrap: wrap;
-  flex-basis: 100%;
   align-items: center;
 }
 
 
-.img-weather {
+.main-info__img-weather {
   margin: -1rem -0.2rem -1rem 0rem;
 }
 
 
-.city-name {
-  font-family: 'myfont-medium';
+.main-info__city-name {
+  font-weight: 600;
   font-size: 2.9rem;
   padding-right: 1rem;
 }
 
 
-.country {
-  font-family: 'myfont-bold';
+.main-info__country {
+  font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: -0.5rem;
 }
 
 
-.temperature {
+.main-info__temperature {
   margin-left: auto;
   padding-top: 2rem;
   padding-right: 1.5rem;
-  font-family: 'myfont-medium';
+  font-weight: 600;
   font-size: 4rem;
 }
 
 
-.close-button {
+.main-info__close-button {
   display: none;
   width: 1.5rem;
   height: 1.5rem;
   margin-right: -3rem;
   padding-left: 1.5rem;
+  padding-bottom: 2.5rem;
 }
 
 
-.close-button:before, .close-button:after {
+.main-info__close-button:before, .main-info__close-button:after {
   position: absolute;
   content: ' ';
   height: 1rem;
@@ -145,33 +144,30 @@ input[type="text"] {
 }
 
 
-.close-button:before {
+.main-info__close-button:before {
   transform: rotate(45deg);
 }
 
 
-.close-button:after {
+.main-info__close-button:after {
   transform: rotate(-45deg);
 }
 
 
-.card-item:hover .close-button {
+.card-item:hover .main-info__close-button {
   display: inline-block;
 }
 
 
-
-.second-line {
-  flex-basis: 100%;
+.extra-info {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 
-.weather-description {
+.extra-info__weather-description {
   flex: 1;
-  font-family: 'myfont-regular';
   text-align: left;
   font-size: 1.5rem;
   padding-left: 1rem;
@@ -179,40 +175,36 @@ input[type="text"] {
 }
 
 
-.feels-like {
+.extra-info__feels-like {
   flex: 1;
   text-align: right;
-  font-family: 'myfont-regular';
   padding-right: 1.5rem;
   margin-top: 0.5rem;
   font-size: 1.5rem;
 }
 
 
-.third-line {
+.air-quality {
   display: flex;
-  flex-basis: 100%;
 }
 
 
-.air-description {
+.air-quality__air-description {
   width: 100%;
   text-align: left;
   padding-left: 1rem;
-  font-family: 'myfont-regular';
   font-size: 1.5rem;
 }
 
 
-.fourth-line {
+.details {
   display: flex;
-  flex-basis: 100%;
   justify-content: center;
   padding-bottom: 1rem;
 }
 
 
-.arrow {
+.details--show {
   height: 0.6rem;
   width: 0.6rem;
   border-style: solid;
@@ -225,7 +217,6 @@ input[type="text"] {
 
 .card-item-details {
   display: flex;
-  font-family: 'myfont-regular';
   color: #black;
   border: none;
   background: #ffffff;
@@ -233,7 +224,7 @@ input[type="text"] {
 }
 
 
-.table-details {
+.card-item-details__table {
   border-collapse: collapse;
   width: 100%;
   font-size: 1.1rem;
@@ -241,22 +232,22 @@ input[type="text"] {
 }
 
 
-.table-details tr {
+.card-item-details__table tr {
   border-bottom: 1px solid #ccc;
 }
 
 
-.table-details tr:last-of-type {
+.card-item-details__table tr:last-of-type {
   border: none;
 }
 
 
-.table-details td {
+.card-item-details__table td {
   padding: 0.6rem;
 }
 
 
-.table-details th {
+.card-item-details__table th {
   padding-top: 0.9rem;
   padding-bottom: 0.9rem;
   text-align: left;
