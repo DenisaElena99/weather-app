@@ -89,6 +89,66 @@
       <h1> pass this </h1>
     </div>
   </script> -->
+  <script src="text/x-template" id="template--app">
+    <app>
+      <div class="search-location" v-on:keyup.enter="getWeather">
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Enter your city here..."
+          v-model="citySearch"
+        />
+      </div>
+      <div v-for="(newCity,index) in cities" :key="newCity.cityName">
+        <div class="card-item">
+          <div class="main-info">
+            <div class="main-info__img-weather">
+              <div v-if="stormy">
+                <img src="img/13d.png">
+              </div>
+              <div v-if="clearSky">
+                <img src="img/01d.png">
+              </div>
+              <div v-if="snowy">
+                <img src="img/13d.png">
+              </div>
+              <div v-if="cloudy">
+                <img src="img/03d.png">
+              </div>
+            </div>
+            <div class="main-info__city-name">
+              {{newCity.cityName}}
+            </div>
+            <div class="main-info__country">
+              {{newCity.country}}, 9pm
+            </div>
+            <div class="main-info__temperature">
+              {{newCity.temperature}}&deg
+            </div>
+            <div class="main-info__close-button">
+            </div>
+          </div>
+          <div class="extra-info">
+            <div class="extra-info__weather-description">
+              {{newCity.weatherDescription}}
+            </div>
+            <div class="extra-info__feels-like">
+              {{newCity.feelsLike}}&deg
+            </div>
+          </div>
+          <div class="air-quality">
+            <div class="air-quality__air-description">
+              {{newCity.airDescription}} air quality
+            </div>
+          </div>
+          <div class="details">
+            <div class="details--show">
+            </div>
+          </div>
+        </div>
+      </div>
+    </app>
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <script src="components/app.js"></script>
   <script src="components/city.js"></script>

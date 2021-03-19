@@ -1,5 +1,5 @@
 new Vue({
-  el: '.card-item',
+  el: '.container',
   components: {
     'App': App,
     'City': City,
