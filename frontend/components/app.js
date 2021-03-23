@@ -1,9 +1,18 @@
 var App = Vue.component('App', {
-  props: ['city'],
   template: '#template--app',
   data() {
     return {
-      newCity: '',
+      citySearch: '',
+      newCity: {
+        cityName: "",
+        country: "",
+        feelsLike: "",
+        temperature: "",
+        timeOftheDay: "",
+        weatherDescription: "",
+        airDescription: "",
+        components: "",
+      },
       cities : [],
       isDay: true,
       cityFound: false,
@@ -16,24 +25,17 @@ var App = Vue.component('App', {
     }
   },
   methods: {
-    getWeather () {
+    getWeather: async function () {
       console.log(this.citySearch);
-      const URL = 'http://localhost:5000/api/currentCity';
+      const URL = `http://localhost:5000/api/currentCity`;
       try {
-        fetch(URL)
-          .then(res => res.json())
-          .then(data => console.log(data))
+        const response = await fetch(URL);
+        const data = await response.json();
+        console.log(data);
+        this.newCity = data;
         this.citySearch= "";
-        this.newCity.cityName = data.cityName;
-        this.newCity.country = data.countryCode;
-        this.newCity.feelsLike = data.feelsLikeTemperature;
-        this.newCity.temperature = data.temperature;
-        this.newCity.timeOftheDay = data.timeOfTheDay;
-        this.newCity.weatherDescription = data.weatherDescription;
-        this.newCity.airDescription = data.valueIndex;
-        this.newCity.components = data.components;
 
-        const mainWeather = city.weatherDescription;
+        const mainWeather = newCity.weatherDescription;
 
           if (mainWeather.includes("Clear") || mainWeather.includes("Few")) {
             this.clearSky = false;
@@ -72,16 +74,16 @@ var App = Vue.component('App', {
       }
     },
 
-    addCity() {
-      this.cities.push({
-        cityName: this.newTodo,
-      });
-      this.newCity = '';
-    },
-
-
-    deleteCity (index) {
-      this.cities.splice(index, 1);
-    },
+    // addCity() {
+    //   this.cities.push({
+    //     cityName: this.newTodo,
+    //   });
+    //   this.newCity = '';
+    // },
+    //
+    //
+    // deleteCity (index) {
+    //   this.cities.splice(index, 1);
+    // },
   }
 });
