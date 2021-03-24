@@ -1,6 +1,16 @@
-var City = Vue.component('City', {
+var City = {
+  name: 'City',
   template: '#template--city',
   props: {
-    city: Object,
+    newCity: [
+      'cityName',
+      'country',
+      'feelsLike',
+      'temperature',
+      'timeOftheDay',
+      'weatherDescription',
+      'airDescription',
+      'components'
+    ]
   }
-});
+};

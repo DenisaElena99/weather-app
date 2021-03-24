@@ -22,7 +22,7 @@
 
     <script type="text/x-template" id="template--app">
       <div>
-        <div class="search-location" v-on:keyup.enter="getWeather">
+        <div class="search-location">
           <input
             type="text"
             class="search-bar"
@@ -30,24 +30,24 @@
             v-model="citySearch"
           />
         </div>
-        <div v-for="(newCity,index) in cities" :key="newCity.cityName">
+        <div  :key="newCity.cityName">
           <city></city>
         </div>
       </div>
     </script>
 
     <script type="text/x-template" id="template--city">
-      <div>
+      <div getWeather>
         <div class="card-item">
           <div class="main-info">
             <div class="main-info__img-weather">
               <img src="img/13d.png">
             </div>
             <div class="main-info__city-name">
-              {{cityName}}
+              {{newCity.cityName}}
             </div>
             <div class="main-info__country">
-              {{country}}, 9pm
+              {{newCity.country}}, 9pm
             </div>
             <div class="main-info__temperature">
               {{temperature}}&deg
@@ -113,8 +113,8 @@
               </tr>
           </table>
         </div>
-    </div>
-  </script>
+      </div>
+    </script>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <script src="components/app.js"></script>

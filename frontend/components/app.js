@@ -1,4 +1,5 @@
-var App = Vue.component('App', {
+var App = {
+  name: 'App',
   template: '#template--app',
   data() {
     return {
@@ -24,6 +25,7 @@ var App = Vue.component('App', {
       snowy: false,
     }
   },
+
   methods: {
     getWeather: async function () {
       console.log(this.citySearch);
@@ -32,7 +34,12 @@ var App = Vue.component('App', {
         const response = await fetch(URL);
         const data = await response.json();
         console.log(data);
-        this.newCity = data;
+        this.newCity.cityName = data.cityName;
+        this.newCity.country = data.country;
+        this.newCity.feelsLike = data.feelsLike;
+        this.newCity.temperature = data.temperature;
+        this.newCity.weatherDescription = data.weatherDescription;
+        this.newCity.airDescription = data.airDescription;
         this.citySearch= "";
 
         const mainWeather = newCity.weatherDescription;
@@ -86,4 +93,4 @@ var App = Vue.component('App', {
     //   this.cities.splice(index, 1);
     // },
   }
-});
+};

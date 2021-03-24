@@ -1,7 +1,7 @@
 new Vue({
   el: '.container',
   components: {
-    'App': App,
-    'City': City,
+    'app': App,
+    'city': City,
   },
 });
