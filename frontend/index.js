@@ -1,7 +1,6 @@
-new Vue({
+var weatherApp = new Vue({
   el: '.container',
   components: {
-    'app': App,
-    'city': City,
+    'app': App
   },
 });

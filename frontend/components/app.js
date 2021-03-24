@@ -1,20 +1,30 @@
 var App = {
-  name: 'App',
   template: '#template--app',
+  components: {
+    'city': City
+  },
   data() {
     return {
       citySearch: '',
-      newCity: {
-        cityName: "",
-        country: "",
-        feelsLike: "",
-        temperature: "",
-        timeOftheDay: "",
-        weatherDescription: "",
-        airDescription: "",
-        components: "",
-      },
       cities : [],
+      cityName: "",
+      country: "",
+      feelsLike: "",
+      temperature: "",
+      timeOftheDay: "",
+      weatherDescription: "",
+      airDescription: "",
+      components: "",
+      // newCity: {
+      //   cityName: "",
+      //   country: "",
+      //   feelsLike: "",
+      //   temperature: "",
+      //   timeOftheDay: "",
+      //   weatherDescription: "",
+      //   airDescription: "",
+      //   components: "",
+      // },
       isDay: true,
       cityFound: false,
       visible: false,
@@ -25,7 +35,6 @@ var App = {
       snowy: false,
     }
   },
-
   methods: {
     getWeather: async function () {
       console.log(this.citySearch);
@@ -34,15 +43,18 @@ var App = {
         const response = await fetch(URL);
         const data = await response.json();
         console.log(data);
-        this.newCity.cityName = data.cityName;
-        this.newCity.country = data.country;
-        this.newCity.feelsLike = data.feelsLike;
-        this.newCity.temperature = data.temperature;
-        this.newCity.weatherDescription = data.weatherDescription;
-        this.newCity.airDescription = data.airDescription;
-        this.citySearch= "";
+        this.cityName = data.cityName;
+        this.country = data.countryCode;
+        this.feelsLike = data.feelsLikeTemperature;
+        this.temperature = data.temperature;
+        this.weatherDescription = data.weatherDescription;
+        this.airDescription = data.valueIndex;
+        this.components = data.componentsList;
+        this.citySearch= '';
 
-        const mainWeather = newCity.weatherDescription;
+        console.log(this.components);
+
+        const mainWeather = this.weatherDescription;
 
           if (mainWeather.includes("Clear") || mainWeather.includes("Few")) {
             this.clearSky = false;

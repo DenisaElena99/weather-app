@@ -27,27 +27,34 @@
             type="text"
             class="search-bar"
             placeholder="Enter your city here..."
+            @click = "getWeather"
             v-model="citySearch"
           />
         </div>
-        <div  :key="newCity.cityName">
-          <city></city>
+        <div :key="cityName">
+          <city
+          :cityName="cityName"
+          :country="country"
+          :feelsLike="feelsLike"
+          :temperature="temperature"
+          :weatherDescription="weatherDescription"
+          :airDescription="airDescription"></city>
         </div>
       </div>
     </script>
 
     <script type="text/x-template" id="template--city">
-      <div getWeather>
+      <div>
         <div class="card-item">
           <div class="main-info">
             <div class="main-info__img-weather">
               <img src="img/13d.png">
             </div>
             <div class="main-info__city-name">
-              {{newCity.cityName}}
+              {{cityName}}
             </div>
             <div class="main-info__country">
-              {{newCity.country}}, 9pm
+              {{country}}, 9pm
             </div>
             <div class="main-info__temperature">
               {{temperature}}&deg
@@ -65,7 +72,7 @@
           </div>
           <div class="air-quality">
             <div class="air-quality__air-description">
-              {{airDescription}}
+              {{airDescription}} air quality
             </div>
           </div>
           <div class="details">
@@ -81,35 +88,35 @@
               </tr>
               <tr>
                 <td>CO</td>
-                <td>{{components[0]}}</td>
+                <td>{{components}}</td>
               </tr>
               <tr>
                 <td>NH3</td>
-                <td>{{components[1]}}</td>
+                <td>{{components}}</td>
               </tr>
               <tr>
                 <td>NO</td>
-                <td>{{components[2]}}</td>
+                <td>{{components}}</td>
               </tr>
               <tr>
                 <td>NO2</td>
-                <td>{{components[3]}}</td>
+                <td>{{components}}</td>
               </tr>
               <tr>
                 <td>O3</td>
-                <td>{{components[4]}}</td>
+                <td>{{components}}</td>
               </tr>
               <tr>
                 <td>PM2.5</td>
-                <td>{{components[5]}}</td>
+                <td>{{components}}</td>
               </tr>
               <tr>
                 <td>PM10</td>
-                <td>{{components[6]}}</td>
+                <td>{{components}}</td>
               </tr>
               <tr>
                 <td>SO2</td>
-                <td>{{components[7]}}</td>
+                <td>{{components}}</td>
               </tr>
           </table>
         </div>
@@ -117,8 +124,8 @@
     </script>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-  <script src="components/app.js"></script>
   <script src="components/city.js"></script>
+  <script src="components/app.js"></script>
   <script src="index.js"></script>
   </body>
 </html>

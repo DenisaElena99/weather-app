@@ -1,16 +1,14 @@
 var City = {
-  name: 'City',
   template: '#template--city',
-  props: {
-    newCity: [
-      'cityName',
-      'country',
-      'feelsLike',
-      'temperature',
-      'timeOftheDay',
-      'weatherDescription',
-      'airDescription',
-      'components'
-    ]
+  props:
+  {
+    cityName: String,
+    country: String,
+    feelsLike: Number,
+    temperature: Number,
+    timeOftheDay: String,
+    weatherDescription: String,
+    airDescription: String,
+    components: Object,
   }
 };
