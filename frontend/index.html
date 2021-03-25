@@ -22,29 +22,28 @@
 
     <script type="text/x-template" id="template--app">
       <div>
-        <div class="search-location">
+        <div class="search-location" v-on:keyup.enter="getSearchCityWeather">
           <input
             type="text"
             class="search-bar"
             placeholder="Enter your city here..."
-            @click = ""
-            v-model="citySearch"
+            v-model="currentCity.citySearch"
           />
         </div>
-        <div :key="newCity.cityName">
+        <div :key="currentCity.cityName">
           <city
-          :cityName="newCity.cityName"
-          :country="newCity.country"
-          :feelsLike="newCity.feelsLike"
-          :temperature="newCity.temperature"
-          :weatherDescription="newCity.weatherDescription"
-          :airDescription="newCity.airDescription"
-          :components="newCity.components"
-          :myTime="newCity.myTime"
-          :stormy="newCity.stormy"
-          :cloudy="newCity.cloudy"
-          :clearSky="newCity.clearSky"
-          :snowy="newCity.snowy"></city>
+          :cityName="currentCity.cityName"
+          :country="currentCity.country"
+          :feelsLike="currentCity.feelsLike"
+          :temperature="currentCity.temperature"
+          :weatherDescription="currentCity.weatherDescription"
+          :airDescription="currentCity.airDescription"
+          :components="currentCity.components"
+          :myTime="currentCity.myTime"
+          :stormy="currentCity.stormy"
+          :cloudy="currentCity.cloudy"
+          :clearSky="currentCity.clearSky"
+          :snowy="currentCity.snowy"></city>
         </div>
       </div>
     </script>

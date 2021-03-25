@@ -2,6 +2,7 @@ var City = {
   template: '#template--city',
   props:
   {
+    citySearch: String,
     cityName: String,
     country: String,
     feelsLike: Number,
