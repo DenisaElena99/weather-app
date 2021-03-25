@@ -11,5 +11,9 @@ var City = {
     airDescription: String,
     components: Object,
     myTime: String,
+    stormy: Boolean,
+    cloudy: Boolean,
+    clearSky: Boolean,
+    snowy: Boolean,
   }
 };

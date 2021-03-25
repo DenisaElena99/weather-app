@@ -7,78 +7,79 @@ var App = {
     return {
       citySearch: '',
       cities : [],
-      cityName: "",
-      country: "",
-      feelsLike: 0,
-      temperature: 0,
-      timeOftheDay: "",
-      weatherDescription: "",
-      airDescription: "",
-      components: {},
-      myTime: "",
-      isDay: true,
+      newCity: {
+        cityName: "",
+        country: "",
+        feelsLike: 0,
+        temperature: 0,
+        timeOftheDay: "",
+        weatherDescription: "",
+        airDescription: "",
+        components: {},
+        myTime: "",
+        visible: false,
+        stormy: false,
+        cloudy: false,
+        clearSky: false,
+        snowy: false,
+        isDay: true,
+      },
       cityFound: false,
-      visible: false,
-      time: 0,
-      stormy: false,
-      cloudy: false,
-      clearSky: false,
-      snowy: false,
     }
   },
   methods: {
-    getWeather: async function () {
+    getCurrentWeather: async function () {
       console.log(this.citySearch);
       const URL = `http://localhost:5000/api/currentCity`;
       try {
         const response = await fetch(URL);
         const data = await response.json();
         console.log(data);
-        this.cityName = data.cityName;
-        this.country = data.countryCode;
-        this.feelsLike = data.feelsLikeTemperature;
-        this.temperature = data.temperature;
-        this.weatherDescription = data.weatherDescription;
-        this.airDescription = data.valueIndex;
-        this.components = data.componentsList;
+        this.newCity.cityName = data.cityName;
+        this.newCity.country = data.countryCode;
+        this.newCity.feelsLike = data.feelsLikeTemperature;
+        this.newCity.temperature = data.temperature;
+        this.newCity.weatherDescription = data.weatherDescription;
+        this.newCity.airDescription = data.valueIndex;
+        this.newCity.components = data.componentsList;
         this.citySearch= '';
 
 
         const mainWeather = this.weatherDescription;
 
           if (mainWeather.includes("Clear") || mainWeather.includes("Few")) {
-            this.clearSky = false;
-            this.cloudy = true;
-            this.stormy = false;
-            this.snowy = false;
+            this.newCity.cloudy = true;
+            this.newCity.clearSky = false;
+            this.newCity.stormy = false;
+            this.newCity.snowy = false;
           }
 
           if (mainWeather.includes("Thunderstorm") || mainWeather.includes("Rain")) {
-            this.stormy = true;
-            this.cloudy = false;
-            this.clearSky = false;
-            this.snowy = false;
+            this.newCity.stormy = true;
+            this.newCity.cloudy = false;
+            this.newCity.clearSky = false;
+            this.newCity.snowy = false;
           }
 
           if (mainWeather.includes("Clouds")) {
-            this.cloudy = true;
-            this.clearSky = false;
-            this.stormy = false;
-            this.snowy = false;
+            this.newCity.cloudy = true;
+            this.newCity.clearSky = false;
+            this.newCity.stormy = false;
+            this.newCity.snowy = false;
           }
 
           if (mainWeather.includes("Snow") || mainWeather.includes("Mist")) {
-            this.snowy = true;
-            this.stormy = false;
-            this.cloudy = false;
-            this.clearSky = false;
+            this.newCity.snowy = true;
+            this.newCity.stormy = false;
+            this.newCity.cloudy = false;
+            this.vclearSky = false;
           }
 
           this.visible = true;
           this.cityFound = false;
 
           var time = new Date();
-          this.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+          this.newCity.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
 
       } catch (error) {
         console.log(error);
@@ -87,10 +88,9 @@ var App = {
       }
     },
 
-
     // addCity() {
     //   this.cities.push({
-    //     cityName: this.newTodo,
+    //     cityName: this.,
     //   });
     //   this.newCity = '';
     // },
@@ -100,7 +100,7 @@ var App = {
     //   this.cities.splice(index, 1);
     // },
   },
-  beforeMount() {
-    this.getWeather()
+  mounted () {
+    this.getCurrentWeather()
  },
 };

@@ -31,16 +31,20 @@
             v-model="citySearch"
           />
         </div>
-        <div :key="cityName">
+        <div :key="newCity.cityName">
           <city
-          :cityName="cityName"
-          :country="country"
-          :feelsLike="feelsLike"
-          :temperature="temperature"
-          :weatherDescription="weatherDescription"
-          :airDescription="airDescription"
-          :components="components"
-          :myTime="myTime"></city>
+          :cityName="newCity.cityName"
+          :country="newCity.country"
+          :feelsLike="newCity.feelsLike"
+          :temperature="newCity.temperature"
+          :weatherDescription="newCity.weatherDescription"
+          :airDescription="newCity.airDescription"
+          :components="newCity.components"
+          :myTime="newCity.myTime"
+          :stormy="newCity.stormy"
+          :cloudy="newCity.cloudy"
+          :clearSky="newCity.clearSky"
+          :snowy="newCity.snowy"></city>
         </div>
       </div>
     </script>
@@ -50,7 +54,7 @@
         <div class="card-item">
           <div class="main-info">
             <div class="main-info__img-weather">
-              <img src="img/13d.png">
+              <img src="img/01d.png">
             </div>
             <div class="main-info__city-name">
               {{cityName}}
