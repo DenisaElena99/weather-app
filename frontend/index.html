@@ -30,20 +30,20 @@
             v-model="currentCity.citySearch"
           />
         </div>
-        <div :key="currentCity.cityName">
+        <div v-for="city in cities" :key="city.cityName">
           <city
-          :cityName="currentCity.cityName"
-          :country="currentCity.country"
-          :feelsLike="currentCity.feelsLike"
-          :temperature="currentCity.temperature"
-          :weatherDescription="currentCity.weatherDescription"
-          :airDescription="currentCity.airDescription"
-          :components="currentCity.components"
-          :myTime="currentCity.myTime"
-          :stormy="currentCity.stormy"
-          :cloudy="currentCity.cloudy"
-          :clearSky="currentCity.clearSky"
-          :snowy="currentCity.snowy"></city>
+          :cityName="city.cityName"
+          :country="city.country"
+          :feelsLike="city.feelsLike"
+          :temperature="city.temperature"
+          :weatherDescription="city.weatherDescription"
+          :airDescription="city.airDescription"
+          :components="city.components"
+          :myTime="city.myTime"
+          :stormy="city.stormy"
+          :cloudy="city.cloudy"
+          :clearSky="city.clearSky"
+          :snowy="city.snowy"></city>
         </div>
       </div>
     </script>
