@@ -10,5 +10,6 @@ var City = {
     weatherDescription: String,
     airDescription: String,
     components: Object,
+    myTime: String,
   }
 };

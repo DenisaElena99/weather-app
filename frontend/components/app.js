@@ -15,7 +15,7 @@ var App = {
       weatherDescription: "",
       airDescription: "",
       components: {},
-      co: "",
+      myTime: "",
       isDay: true,
       cityFound: false,
       visible: false,
@@ -43,7 +43,6 @@ var App = {
         this.components = data.componentsList;
         this.citySearch= '';
 
-        console.log(this.components);
 
         const mainWeather = this.weatherDescription;
 
@@ -77,12 +76,17 @@ var App = {
 
           this.visible = true;
           this.cityFound = false;
+
+          var time = new Date();
+          this.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+
       } catch (error) {
         console.log(error);
         this.cityFound = true;
         this.visible = false;
       }
     },
+
 
     // addCity() {
     //   this.cities.push({

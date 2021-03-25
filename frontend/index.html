@@ -39,7 +39,8 @@
           :temperature="temperature"
           :weatherDescription="weatherDescription"
           :airDescription="airDescription"
-          :components="components"></city>
+          :components="components"
+          :myTime="myTime"></city>
         </div>
       </div>
     </script>
@@ -55,7 +56,7 @@
               {{cityName}}
             </div>
             <div class="main-info__country">
-              {{country}}, 9pm
+              {{country}}, {{myTime}}
             </div>
             <div class="main-info__temperature">
               {{temperature}}&deg
