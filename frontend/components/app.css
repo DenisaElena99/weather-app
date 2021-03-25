@@ -1,4 +1,68 @@
-.search-bar {
+@font-face {
+    font-family: "DINNextLTPro";
+    src: url(fonts/DINNextLTPro-Regular.woff) format('woff')
+}
+
+
+@font-face {
+    font-family: "DINNextLTPro";
+    src: url(fonts/DINNextLTPro-Medium.woff) format('woff');
+    font-weight: 600;
+}
+
+
+@font-face {
+    font-family: "DINNextLTPro";
+    src: url(fonts/DINNextLTPro-Bold.woff) format('woff');
+    font-weight: bold;
+}
+
+
+html, body {
+  font-size: 15px;
+  font-family: 'DINNextLTPro';
+  background-image: #f3f8ff;
+}
+
+
+input, button {
+  font-family: 'DINNextLTPro';
+}
+
+
+.container {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 900px;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+
+.header__app-name  {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+
+.header__logo {
+  background: #f6e1d3;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
+}
+
+
+.search-location {
   display: flex;
   padding-bottom: 2.5rem;
 }

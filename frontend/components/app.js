@@ -9,22 +9,13 @@ var App = {
       cities : [],
       cityName: "",
       country: "",
-      feelsLike: "",
-      temperature: "",
+      feelsLike: 0,
+      temperature: 0,
       timeOftheDay: "",
       weatherDescription: "",
       airDescription: "",
-      components: "",
-      // newCity: {
-      //   cityName: "",
-      //   country: "",
-      //   feelsLike: "",
-      //   temperature: "",
-      //   timeOftheDay: "",
-      //   weatherDescription: "",
-      //   airDescription: "",
-      //   components: "",
-      // },
+      components: {},
+      co: "",
       isDay: true,
       cityFound: false,
       visible: false,
@@ -104,5 +95,8 @@ var App = {
     // deleteCity (index) {
     //   this.cities.splice(index, 1);
     // },
-  }
+  },
+  beforeMount() {
+    this.getWeather()
+ },
 };

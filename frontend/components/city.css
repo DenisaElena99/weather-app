@@ -17,6 +17,14 @@
     font-weight: bold;
 }
 
+
+html, body {
+  font-size: 15px;
+  font-family: 'DINNextLTPro';
+  background-image: #f3f8ff;
+}
+
+
 .card-item {
   font-size: 1.2rem;
   color: #ffffff;
@@ -110,6 +118,7 @@
   font-size: 1.5rem;
   padding-left: 1rem;
   margin-top: 0.5rem;
+  text-transform: capitalize;
 }
 
 

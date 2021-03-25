@@ -27,7 +27,7 @@
             type="text"
             class="search-bar"
             placeholder="Enter your city here..."
-            @click = "getWeather"
+            @click = ""
             v-model="citySearch"
           />
         </div>
@@ -38,7 +38,8 @@
           :feelsLike="feelsLike"
           :temperature="temperature"
           :weatherDescription="weatherDescription"
-          :airDescription="airDescription"></city>
+          :airDescription="airDescription"
+          :components="components"></city>
         </div>
       </div>
     </script>
@@ -88,35 +89,35 @@
               </tr>
               <tr>
                 <td>CO</td>
-                <td>{{components}}</td>
+                <td>{{components.co}}</td>
               </tr>
               <tr>
                 <td>NH3</td>
-                <td>{{components}}</td>
+                <td>{{components.nh3}}</td>
               </tr>
               <tr>
                 <td>NO</td>
-                <td>{{components}}</td>
+                <td>{{components.no}}</td>
               </tr>
               <tr>
                 <td>NO2</td>
-                <td>{{components}}</td>
+                <td>{{components.no2}}</td>
               </tr>
               <tr>
                 <td>O3</td>
-                <td>{{components}}</td>
+                <td>{{components.o3}}</td>
               </tr>
               <tr>
                 <td>PM2.5</td>
-                <td>{{components}}</td>
+                <td>{{components.pm2_5}}</td>
               </tr>
               <tr>
                 <td>PM10</td>
-                <td>{{components}}</td>
+                <td>{{components.pm10}}</td>
               </tr>
               <tr>
                 <td>SO2</td>
-                <td>{{components}}</td>
+                <td>{{components.so2}}</td>
               </tr>
           </table>
         </div>
