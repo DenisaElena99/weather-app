@@ -78,6 +78,7 @@ def get_city():
     city = request.args.get('q')
     urlWeather = f'http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={API_KEY}'
     responseWeather = requests.get(urlWeather).json()
+    print(responseWeather)
     coordinates = responseWeather['coord']
     lat = coordinates['lat']
     lon = coordinates['lon']
