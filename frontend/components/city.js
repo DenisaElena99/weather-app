@@ -2,7 +2,6 @@ var City = {
   template: '#template--city',
   props:
   {
-    // citySearch: String,
     cityName: String,
     country: String,
     feelsLike: Number,
@@ -17,10 +16,12 @@ var City = {
     clearSky: Boolean,
     snowy: Boolean,
     myUnixTime: Number,
+    index: Number,
+    detailSeen: Boolean, 
   },
   methods: {
     deleteCity(index) {
-      this.cities.splice(index, 1);
+      this.$emit('deleteCity', this.cityName)
     }
   }
 };

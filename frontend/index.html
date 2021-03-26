@@ -30,7 +30,7 @@
             v-model="newCity.citySearch"
           />
         </div>
-        <div v-for="city in cities" :key="city.cityName">
+        <div v-for="(city, index) in cities" :key="city.cityName">
           <city
           :cityName="city.cityName"
           :country="city.country"
@@ -43,7 +43,9 @@
           :stormy="city.stormy"
           :cloudy="city.cloudy"
           :clearSky="city.clearSky"
-          :snowy="city.snowy"></city>
+          :snowy="city.snowy"
+          :detailSeen="city.detailSeen"
+          @deleteCity="deleteCity(index)"></city>
         </div>
       </div>
     </script>
@@ -64,7 +66,7 @@
             <div class="main-info__temperature">
               {{temperature}}&deg
             </div>
-            <div class="main-info__close-button" @click="deleteCity(city)">
+            <div class="main-info__close-button" @click="deleteCity(index)">
             </div>
           </div>
           <div class="extra-info">
@@ -81,11 +83,11 @@
             </div>
           </div>
           <div class="details">
-            <div class="details--show">
+            <div class="details--show" v-on:click="detailSeen = !detailSeen">
             </div>
           </div>
         </div>
-        <div class="card-item-details">
+        <div class="card-item-details" v-if="detailSeen">
           <table class="card-item-details__table">
               <tr>
                 <th>Air pollution component</th>

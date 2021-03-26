@@ -147,27 +147,29 @@ var App = {
           this.newCity.clearSky = false;
         }
 
-
-
-        // var myDate = this.newCity.myUnixTime*1000;
-        // console.log(myDate)
-        // this.newCity.myTime = myDate.getHours('en-US', { hour: 'numeric', hour12: true });
-        // var time = new Date();
-        // this.newCity.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
-
         this.cities.push({...this.newCity});
-        // this.newCity.citySearch = '';
+
       } catch (error) {
         this.cityFound = true;
         this.visible = false;
       }
     },
 
-
-    // addCity() {
-    //   this.cities.push(this.newCity);
-    //   this.newCity.citySearch = '';
-    // },
+    // del (index) {
+    //   // this.arr.splice(index, 1)
+    //   this.$delete(this.cities, index)
+    // }
+    // deleteItem(i) {
+    //   console.log("In parent deleteItem " + i);
+    //   this.cities.splice(i, 1);
+    // }
+  //   removeCity: function (newCity) {
+  //   var index = this.cities.indexOf(newCity)
+  //   this.cities.splice(index, 1)
+  // }
+    // removeCity(cityName) {
+    //   this.cities = this.cities.filter(city => row.id !== id);
+    // }
 
     // deleteCity(index) {
     //   this.cities.splice(index, 1);
