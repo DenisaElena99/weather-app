@@ -47,6 +47,7 @@ def get_weather(responseWeather, responseAirPollution):
     mainIndex = list[0]['main']
     airIndex = mainIndex['aqi']
     componentsList = list[0]['components']
+    myUnixTime = responseWeather['dt']
     value = get_air_index_value(airIndex)
 
     if responseWeather['cod'] != 200:
@@ -69,6 +70,7 @@ def get_weather(responseWeather, responseAirPollution):
         'valueIndex': value,
         'timeOfTheDay': timeOfTheDay,
         'componentsList': componentsList,
+        'hour': myUnixTime,
     }
     return DATA
 
@@ -76,8 +78,12 @@ def get_weather(responseWeather, responseAirPollution):
 @app.route('/api/city')
 def get_city():
     city = request.args.get('q')
+    print(city)
     urlWeather = f'http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={API_KEY}'
     responseWeather = requests.get(urlWeather).json()
+    if responseWeather['cod'] != 200:
+        message = responseWeather.get('message', '')
+        return f'Error getting data for {city}. Error message = {message}'
     print(responseWeather)
     coordinates = responseWeather['coord']
     lat = coordinates['lat']
@@ -96,6 +102,9 @@ def index():
     urlWeather = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&APPID={API_KEY}'
     urlAirPollution = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API_KEY}'
     responseWeather = requests.get(urlWeather).json()
+    if responseWeather['cod'] != 200:
+        message = responseWeather.get('message', '')
+        return f'Error getting data  for {city}. Error message = {message}'
     responseAirPollution = requests.get(urlAirPollution).json()
     DATA = get_weather(responseWeather, responseAirPollution)
     return DATA
