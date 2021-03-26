@@ -40,6 +40,7 @@ var App = {
         clearSky: false,
         snowy: false,
         isDay: true,
+        myUnixTime: 0,
       },
       cityFound: false,
     }
@@ -97,8 +98,6 @@ var App = {
         console.log(this.cities);
       } catch (error) {
         console.log(error);
-        this.cityFound = true;
-        this.visible = false;
       }
     },
 
@@ -118,6 +117,7 @@ var App = {
         this.newCity.weatherDescription = data.weatherDescription;
         this.newCity.airDescription = data.valueIndex;
         this.newCity.components = data.componentsList;
+        this.newCity.myUnixTime = data.myUnixTime;
 
         if (this.newCity.weatherDescription.includes("Clear") || this.newCity.weatherDescription.includes("Few")) {
           this.newCity.cloudy = true;
@@ -147,20 +147,31 @@ var App = {
           this.newCity.clearSky = false;
         }
 
-        this.visible = true;
-        this.cityFound = false;
 
-        var time = new Date();
-        this.newCity.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
 
-        this.cities.push(this.newCity);
+        // var myDate = this.newCity.myUnixTime*1000;
+        // console.log(myDate)
+        // this.newCity.myTime = myDate.getHours('en-US', { hour: 'numeric', hour12: true });
+        // var time = new Date();
+        // this.newCity.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
 
+        this.cities.push({...this.newCity});
+        // this.newCity.citySearch = '';
       } catch (error) {
-        // console.log(error);
         this.cityFound = true;
         this.visible = false;
       }
     },
+
+
+    // addCity() {
+    //   this.cities.push(this.newCity);
+    //   this.newCity.citySearch = '';
+    // },
+
+    // deleteCity(index) {
+    //   this.cities.splice(index, 1);
+    // },
   },
   mounted () {
     this.getCurrentWeather()
