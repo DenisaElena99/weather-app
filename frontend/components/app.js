@@ -51,7 +51,6 @@ var App = {
       try {
         const response = await fetch(URL);
         const data = await response.json();
-        // console.log(data);
         this.currentCity.cityName = data.cityName;
         this.currentCity.country = data.countryCode;
         this.currentCity.feelsLike = data.feelsLikeTemperature;
@@ -104,6 +103,7 @@ var App = {
     },
 
     getSearchCityWeather: async function () {
+
       const URL = `http://localhost:5000/api/city?q=${this.newCity.citySearch}`;
       console.log(this.newCity.citySearch);
       try {
@@ -156,7 +156,7 @@ var App = {
         this.cities.push(this.newCity);
 
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         this.cityFound = true;
         this.visible = false;
       }
