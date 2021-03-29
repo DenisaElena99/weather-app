@@ -77,38 +77,3 @@ input[type="text"] {
   border: 0.5px solid #c8c8c8;
   box-shadow: 4px 4px 9px #cfcdcf;
 }
-
-.main-info__close-button {
-  display: none;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: -3rem;
-  padding-left: 1.5rem;
-  padding-bottom: 2.5rem;
-  cursor: pointer;
-}
-
-
-.main-info__close-button:before, .main-info__close-button:after {
-  position: absolute;
-  content: ' ';
-  height: 1rem;
-  width: 0.2rem;
-  margin-right: -2rem;
-  background-color: black;
-}
-
-
-.main-info__close-button:before {
-  transform: rotate(45deg);
-}
-
-
-.main-info__close-button:after {
-  transform: rotate(-45deg);
-}
-
-
-.card-item:hover .main-info__close-button {
-  display: inline-block;
-}

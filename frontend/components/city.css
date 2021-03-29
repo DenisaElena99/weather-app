@@ -27,11 +27,33 @@ html, body {
 
 .card-item {
   font-size: 1.2rem;
-  color: #ffffff;
   border: none;
-  background-image: linear-gradient(to bottom right, #b9d5f7, #87b0db);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 4px 4px 9px #cfcdcf;
+}
+
+
+.clear-sky-few-clouds {
+  background-image: linear-gradient(to bottom right, #b9d5f7, #87b0db);
+  color: #ffffff;
+}
+
+
+.clouds {
+  background-image: linear-gradient(to bottom right, #60798c, #8fb2d5);
+  color: #ffffff;
+}
+
+
+.rain-thunderstorm {
+  background-image: linear-gradient(to bottom right, #3b4045, #7087a0);
+  color: #ffffff;
+}
+
+
+.snow-mist {
+  background-image: linear-gradient(to bottom right, #f0f7fe, #c2dffd);
+  color: #272727;
 }
 
 
@@ -160,6 +182,7 @@ html, body {
   border-width: 0px 3px 3px 0px;
   transform: rotate(-135deg);
   margin-top: -0.5rem;
+  cursor: pointer;
 }
 
 

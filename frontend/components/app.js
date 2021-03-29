@@ -13,6 +13,7 @@ var App = {
         temperature: 0,
         timeOftheDay: "",
         weatherDescription: "",
+        main: "",
         airDescription: "",
         components: {},
         myTime: "",
@@ -22,6 +23,7 @@ var App = {
         clearSky: false,
         snowy: false,
         isDay: true,
+        detailSeen: false,
       },
       newCity: {
         citySearch: "",
@@ -31,6 +33,7 @@ var App = {
         temperature: 0,
         timeOftheDay: "",
         weatherDescription: "",
+        main: "",
         airDescription: "",
         components: {},
         myTime: "",
@@ -41,6 +44,7 @@ var App = {
         snowy: false,
         isDay: true,
         myUnixTime: 0,
+        detailSeen: false,
       },
       cityFound: false,
     }
@@ -57,31 +61,33 @@ var App = {
         this.currentCity.feelsLike = data.feelsLikeTemperature;
         this.currentCity.temperature = data.temperature;
         this.currentCity.weatherDescription = data.weatherDescription;
+        this.currentCity.main = data.main;
         this.currentCity.airDescription = data.valueIndex;
         this.currentCity.components = data.componentsList;
+        console.log(this.currentCity.main);
 
-        if (this.currentCity.weatherDescription.includes("Clear") || this.currentCity.weatherDescription.includes("Few")) {
-          this.currentCity.cloudy = true;
-          this.currentCity.clearSky = false;
+        if (this.currentCity.main.includes("Clear")) {
+          this.currentCity.clearSky = true;
+          this.currentCity.cloudy = false;
           this.currentCity.stormy = false;
           this.currentCity.snowy = false;
         }
 
-        if (this.currentCity.weatherDescription.includes("Thunderstorm") || this.currentCity.weatherDescription.includes("Rain")) {
+        if (this.currentCity.main.includes("Thunderstorm") || this.currentCity.main.includes("Rain")) {
           this.currentCity.stormy = true;
           this.currentCity.cloudy = false;
           this.currentCity.clearSky = false;
           this.currentCity.snowy = false;
         }
 
-        if (this.currentCity.weatherDescription.includes("Clouds")) {
+        if (this.currentCity.main.includes("Clouds")) {
           this.currentCity.cloudy = true;
           this.currentCity.clearSky = false;
           this.currentCity.stormy = false;
           this.currentCity.snowy = false;
         }
 
-        if (this.currentCity.weatherDescription.includes("Snow") || this.currentCity.weatherDescription.includes("Mist")) {
+        if (this.currentCity.main.includes("Snow") || this.currentCity.main.includes("Mist")) {
           this.currentCity.snowy = true;
           this.currentCity.stormy = false;
           this.currentCity.cloudy = false;
@@ -95,7 +101,6 @@ var App = {
         this.currentCity.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
 
         this.cities.push(this.currentCity);
-        console.log(this.cities);
       } catch (error) {
         console.log(error);
       }
@@ -108,7 +113,6 @@ var App = {
       try {
         const response = await fetch(URL);
         const data = await response.json();
-        console.log(data);
         this.newCity.citySearch = "";
         this.newCity.cityName = data.cityName;
         this.newCity.country = data.countryCode;
@@ -118,29 +122,30 @@ var App = {
         this.newCity.airDescription = data.valueIndex;
         this.newCity.components = data.componentsList;
         this.newCity.myUnixTime = data.myUnixTime;
+        this.newCity.main
 
-        if (this.newCity.weatherDescription.includes("Clear") || this.newCity.weatherDescription.includes("Few")) {
-          this.newCity.cloudy = true;
-          this.newCity.clearSky = false;
+        if (this.newCity.weatherDescription.includes("clear") || this.newCity.weatherDescription.includes("few")) {
+          this.newCity.clearSky = true;
+          this.newCity.cloudy = false;
           this.newCity.stormy = false;
           this.newCity.snowy = false;
         }
 
-        if (this.newCity.weatherDescription.includes("Thunderstorm") || this.newCity.weatherDescription.includes("Rain")) {
+        if (this.newCity.weatherDescription.includes("thunderstorm") || this.newCity.weatherDescription.includes("rain")) {
           this.newCity.stormy = true;
           this.newCity.cloudy = false;
           this.newCity.clearSky = false;
           this.newCity.snowy = false;
         }
 
-        if (this.newCity.weatherDescription.includes("Clouds")) {
+        if (this.newCity.weatherDescription.includes("clouds")) {
           this.newCity.cloudy = true;
           this.newCity.clearSky = false;
           this.newCity.stormy = false;
           this.newCity.snowy = false;
         }
 
-        if (this.newCity.weatherDescription.includes("Snow") || this.newCity.weatherDescription.includes("Mist")) {
+        if (this.newCity.weatherDescription.includes("snow") || this.newCity.weatherDescription.includes("mist")) {
           this.newCity.snowy = true;
           this.newCity.stormy = false;
           this.newCity.cloudy = false;
@@ -148,34 +153,39 @@ var App = {
         }
 
         this.cities.push({...this.newCity});
-
       } catch (error) {
         this.cityFound = true;
         this.visible = false;
       }
     },
 
-    // del (index) {
-    //   // this.arr.splice(index, 1)
-    //   this.$delete(this.cities, index)
-    // }
-    // deleteItem(i) {
-    //   console.log("In parent deleteItem " + i);
-    //   this.cities.splice(i, 1);
-    // }
-  //   removeCity: function (newCity) {
-  //   var index = this.cities.indexOf(newCity)
-  //   this.cities.splice(index, 1)
-  // }
-    // removeCity(cityName) {
-    //   this.cities = this.cities.filter(city => row.id !== id);
-    // }
+    deleteCity(index) {
+      this.cities.splice(index, 1);
+    },
 
-    // deleteCity(index) {
-    //   this.cities.splice(index, 1);
-    // },
+    // removeDuplicates () {
+    //   this.cities = [ ...new Set(this.cities) ];
+    // }
   },
-  mounted () {
+
+
+  mounted() {
+    if (window.localStorage.getItem('city-list')) {
+      this.cities = JSON.parse(window.localStorage.getItem('city-list' || '[]'));
+    }
+  },
+
+  watch: {
+   cities: {
+     handler(newCities) {
+       window.localStorage.setItem('city-list', JSON.stringify(newCities));
+     },
+     deep: true,
+   }
+ },
+
+
+  beforeMount () {
     this.getCurrentWeather()
  },
 };

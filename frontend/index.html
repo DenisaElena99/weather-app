@@ -44,6 +44,7 @@
           :cloudy="city.cloudy"
           :clearSky="city.clearSky"
           :snowy="city.snowy"
+          :main="city.main"
           :detailSeen="city.detailSeen"
           @deleteCity="deleteCity(index)"></city>
         </div>
@@ -55,7 +56,10 @@
         <div class="card-item">
           <div class="main-info">
             <div class="main-info__img-weather">
-              <img src="img/01d.png">
+              <img src="img/01d.png" v-if="clearSky">
+              <img src="img/04d.png" v-if="cloudy">
+              <img src="img/10d.png" v-if="stormy">
+              <img src="img/13d.png" v-if="snowy">
             </div>
             <div class="main-info__city-name">
               {{cityName}}
@@ -127,6 +131,8 @@
               </tr>
           </table>
         </div>
+        <br>
+        <br>
       </div>
     </script>
 
