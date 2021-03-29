@@ -87,7 +87,9 @@
             </div>
           </div>
           <div class="details">
-            <div class="details--show" v-on:click="detailSeen = !detailSeen">
+            <div class="details--show" v-on:click="detailSeen = !detailSeen" v-if="detailSeen">
+            </div>
+            <div class="details--hide" v-on:click="detailSeen = !detailSeen" v-if="!detailSeen">
             </div>
           </div>
         </div>

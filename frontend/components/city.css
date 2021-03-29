@@ -186,6 +186,18 @@ html, body {
 }
 
 
+.details--hide {
+  height: 0.6rem;
+  width: 0.6rem;
+  border-style: solid;
+  border-color: white;
+  border-width: 0px 3px 3px 0px;
+  transform: rotate(45deg);
+  margin-top: -0.5rem;
+  cursor: pointer;
+}
+
+
 .card-item-details {
   display: flex;
   color: #black;

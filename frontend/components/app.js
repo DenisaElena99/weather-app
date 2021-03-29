@@ -162,10 +162,6 @@ var App = {
     deleteCity(index) {
       this.cities.splice(index, 1);
     },
-
-    // removeDuplicates () {
-    //   this.cities = [ ...new Set(this.cities) ];
-    // }
   },
 
 
