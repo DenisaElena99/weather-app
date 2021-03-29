@@ -40,6 +40,7 @@ def get_weather(responseWeather, responseAirPollution):
     country_code = sys['country']
     weather = responseWeather['weather']
     weather_description = weather[0]['description']
+    main_weather = weather[0]['main']
     timeOfTheDay = weather[0]['icon']
     main = responseWeather['main']
     feels_like_temperature = main['feels_like']
@@ -71,6 +72,7 @@ def get_weather(responseWeather, responseAirPollution):
         'timeOfTheDay': timeOfTheDay,
         'componentsList': componentsList,
         'hour': myUnixTime,
+        'main': main_weather,
     }
     return DATA
 
