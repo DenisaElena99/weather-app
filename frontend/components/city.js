@@ -3,14 +3,14 @@ var City = {
   props:
   {
     cityName: String,
-    country: String,
-    feelsLike: Number,
+    countryCode: String,
+    feelsLikeTemperature: Number,
     temperature: Number,
     timeOftheDay: String,
     weatherDescription: String,
     main: String,
-    airDescription: String,
-    components: Object,
+    valueIndex: String,
+    componentsList: Object,
     myTime: String,
     myUnixTime: Number,
     index: Number,
@@ -32,6 +32,6 @@ var City = {
         return "snow-mist"
       }
       return "unknown"
-    }
+    },
   }
 };

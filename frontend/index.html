@@ -30,15 +30,15 @@
             v-model="newCity.citySearch"
           />
         </div>
-        <div v-for="(city, index) in cities" :key="city.cityName">
+        <div v-for="(city, index) in myWeatherCities" :key="city.cityName">
           <city
           :cityName="city.cityName"
-          :country="city.country"
-          :feelsLike="city.feelsLike"
+          :countryCode="city.countryCode"
+          :feelsLikeTemperature="city.feelsLikeTemperature"
           :temperature="city.temperature"
           :weatherDescription="city.weatherDescription"
-          :airDescription="city.airDescription"
-          :components="city.components"
+          :valueIndex="city.valueIndex"
+          :componentsList="city.componentsList"
           :myTime="city.myTime"
           :main="city.main"
           :detailSeen="city.detailSeen"
@@ -65,7 +65,7 @@
               {{cityName}}
             </div>
             <div class="main-info__country">
-              {{country}}, {{myTime}}
+              {{countryCode}}, {{myTime}}
             </div>
             <div class="main-info__temperature">
               {{temperature}}&deg
@@ -78,12 +78,12 @@
               {{weatherDescription}}
             </div>
             <div class="extra-info__feels-like">
-              Feels like {{feelsLike}}&deg
+              Feels like {{feelsLikeTemperature}}&deg
             </div>
           </div>
           <div class="air-quality">
             <div class="air-quality__air-description">
-              {{airDescription}} air quality
+              {{valueIndex}} air quality
             </div>
           </div>
           <div class="details">
@@ -101,35 +101,35 @@
               </tr>
               <tr>
                 <td>CO</td>
-                <td>{{components.co}} μg/m<sup>3</sup></td>
+                <td>{{componentsList.co}} μg/m<sup>3</sup></td>
               </tr>
               <tr>
                 <td>NH<sub>3</sub></td>
-                <td>{{components.nh3}} μg/m<sup>3</sup></td>
+                <td>{{componentsList.nh3}} μg/m<sup>3</sup></td>
               </tr>
               <tr>
                 <td>NO</td>
-                <td>{{components.no}} μg/m<sup>3</sup></td>
+                <td>{{componentsList.no}} μg/m<sup>3</sup></td>
               </tr>
               <tr>
                 <td>NO<sub>2</sub></td>
-                <td>{{components.no2}} μg/m<sup>3</sup></td>
+                <td>{{componentsList.no2}} μg/m<sup>3</sup></td>
               </tr>
               <tr>
                 <td>O<sub>3</sub></td>
-                <td>{{components.o3}} μg/m<sup>3</sup></td>
+                <td>{{componentsList.o3}} μg/m<sup>3</sup></td>
               </tr>
               <tr>
                 <td>PM<sub>2.5</sub></td>
-                <td>{{components.pm2_5}} μg/m<sup>3</sup></td>
+                <td>{{componentsList.pm2_5}} μg/m<sup>3</sup></td>
               </tr>
               <tr>
                 <td>PM<sub>10</sub></td>
-                <td>{{components.pm10}} μg/m<sup>3</sup></td>
+                <td>{{componentsList.pm10}} μg/m<sup>3</sup></td>
               </tr>
               <tr>
                 <td>SO<sub>2</sub></td>
-                <td>{{components.so2}} μg/m<sup>3</sup></td>
+                <td>{{componentsList.so2}} μg/m<sup>3</sup></td>
               </tr>
           </table>
         </div>
