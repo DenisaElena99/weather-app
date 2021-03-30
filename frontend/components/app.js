@@ -36,31 +36,31 @@ var App = {
     }
   },
   methods: {
-    getCurrentWeather: async function () {
-
-      const URL = `http://localhost:5000/api/currentCity`;
-      try {
-        const response = await fetch(URL);
-        const data = await response.json();
-        this.currentCity.cityName = data.cityName;
-        // this.cities.push(this.currentCity.cityName);
-        this.currentCity.country = data.countryCode;
-        this.currentCity.feelsLike = data.feelsLikeTemperature;
-        this.currentCity.temperature = data.temperature;
-        this.currentCity.weatherDescription = data.weatherDescription;
-        this.currentCity.main = data.main;
-        this.currentCity.airDescription = data.valueIndex;
-        this.currentCity.components = data.componentsList;
-
-        var time = new Date();
-        this.currentCity.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
-
-        // this.cities.push(this.currentCity);
-
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    // getCurrentWeather: async function () {
+    //
+    //   const URL = `http://localhost:5000/api/currentCity`;
+    //   try {
+    //     const response = await fetch(URL);
+    //     const data = await response.json();
+    //     this.currentCity.cityName = data.cityName;
+    //     // this.cities.push(this.currentCity.cityName);
+    //     this.currentCity.country = data.countryCode;
+    //     this.currentCity.feelsLike = data.feelsLikeTemperature;
+    //     this.currentCity.temperature = data.temperature;
+    //     this.currentCity.weatherDescription = data.weatherDescription;
+    //     this.currentCity.main = data.main;
+    //     this.currentCity.airDescription = data.valueIndex;
+    //     this.currentCity.components = data.componentsList;
+    //
+    //     var time = new Date();
+    //     this.currentCity.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+    //
+    //     // this.cities.push(this.currentCity);
+    //
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // },
 
     // getSearchCityWeather: async function () {
     //   const URL = `http://localhost:5000/api/city?q=`;
