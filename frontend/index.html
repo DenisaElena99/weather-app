@@ -40,10 +40,6 @@
           :airDescription="city.airDescription"
           :components="city.components"
           :myTime="city.myTime"
-          :stormy="city.stormy"
-          :cloudy="city.cloudy"
-          :clearSky="city.clearSky"
-          :snowy="city.snowy"
           :main="city.main"
           :detailSeen="city.detailSeen"
           @deleteCity="deleteCity(index)"></city>
@@ -53,13 +49,17 @@
 
     <script type="text/x-template" id="template--city">
       <div>
-        <div class="card-item">
+        <div class="card-item" :class="getWeatherBackground()">
           <div class="main-info">
             <div class="main-info__img-weather">
-              <img src="img/01d.png" v-if="clearSky">
-              <img src="img/04d.png" v-if="cloudy">
-              <img src="img/10d.png" v-if="stormy">
-              <img src="img/13d.png" v-if="snowy">
+              <img src="img/01d.png" v-if="main === 'Clear'">
+              <img src="img/04d.png" v-if="main === 'Clouds'">
+              <img src="img/10d.png" v-if="main === 'Rain'">
+              <img src="img/11d.png" v-if="main === 'Thunderstorm'">
+              <img src="img/13d.png" v-if="main === 'Snow'">
+              <img src="img/50d.png" v-if="main === 'Mist'">
+              <img src="img/50d.png" v-if="main === 'Haze'">
+              <img src="img/50d.png" v-if="main === 'Dust'">
             </div>
             <div class="main-info__city-name">
               {{cityName}}

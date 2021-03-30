@@ -8,20 +8,30 @@ var City = {
     temperature: Number,
     timeOftheDay: String,
     weatherDescription: String,
+    main: String,
     airDescription: String,
     components: Object,
     myTime: String,
-    stormy: Boolean,
-    cloudy: Boolean,
-    clearSky: Boolean,
-    snowy: Boolean,
     myUnixTime: Number,
     index: Number,
-    detailSeen: Boolean, 
+    detailSeen: Boolean,
   },
   methods: {
     deleteCity(index) {
       this.$emit('deleteCity', this.cityName)
+    },
+
+    getWeatherBackground() {
+      if (this.main == "Clear") {
+        return "clear-sky-few-clouds"
+      } else if (this.main == "Clouds") {
+        return "clouds"
+      } else if (this.main == "Thunderstorm" || this.main == "Rain") {
+        return "rain-thunderstorm"
+      } else if (this.main == "Snow" || this.main == "Mist") {
+        return "snow-mist"
+      }
+      return "unknown"
     }
   }
 };
