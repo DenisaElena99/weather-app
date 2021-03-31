@@ -1,19 +1,19 @@
 @font-face {
     font-family: "DINNextLTPro";
-    src: url(/home/denisa/work/weather-app/weather-app/frontend/fonts/DINNextLTPro-Regular.woff) format('woff')
+    src: url(/home/phyramid/work denisa/weather-app/weather-app/frontend/fonts/DINNextLTPro-Regular.woff) format('woff')
 }
 
 
 @font-face {
     font-family: "DINNextLTPro";
-    src: url(/home/denisa/work/weather-app/weather-app/frontend/fonts/DINNextLTPro-Medium.woff) format('woff');
+    src: url(/home/phyramid/work denisa/weather-app/weather-app/frontend/fonts/DINNextLTPro-Medium.woff) format('woff');
     font-weight: 600;
 }
 
 
 @font-face {
     font-family: "DINNextLTPro";
-    src: url(/home/denisa/work/weather-app/weather-app/frontend/fonts/DINNextLTPro-Bold.woff) format('woff');
+    src: url(/home/phyramid/work denisa/weather-app/weather-app/frontend/fonts/DINNextLTPro-Bold.woff) format('woff');
     font-weight: bold;
 }
 

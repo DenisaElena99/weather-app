@@ -30,6 +30,19 @@
             v-model="citySearch"
           />
         </div>
+        <city
+          :cityName="currentCity.cityName"
+          :countryCode="currentCity.countryCode"
+          :feelsLikeTemperature="currentCity.feelsLikeTemperature"
+          :temperature="currentCity.temperature"
+          :weatherDescription="currentCity.weatherDescription"
+          :valueIndex="currentCity.valueIndex"
+          :componentsList="currentCity.componentsList"
+          :hour="currentCity.hour"
+          :main="currentCity.main"
+          :detailSeen="currentCity.detailSeen"
+          :hideDeleteButton=true
+        ></city>
         <div v-for="(city, index) in myWeatherCities" :key="city.cityName">
           <city
           :cityName="city.cityName"
@@ -70,7 +83,7 @@
             <div class="main-info__temperature">
               {{temperature}}&deg
             </div>
-            <div class="main-info__close-button" @click="deleteCity(index)">
+            <div class="main-info__close-button" v-if="!hideDeleteButton" @click="deleteCity(index)">
             </div>
           </div>
           <div class="extra-info">

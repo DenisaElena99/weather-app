@@ -11,9 +11,10 @@ var City = {
     main: String,
     valueIndex: String,
     componentsList: Object,
-    hour: Number,
+    hour: String,
     index: Number,
     detailSeen: Boolean,
+    hideDeleteButton: Boolean,
   },
   methods: {
     deleteCity(index) {
@@ -32,5 +33,5 @@ var City = {
       }
       return "unknown"
     },
-  }
+  },
 };
