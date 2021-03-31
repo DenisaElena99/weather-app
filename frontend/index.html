@@ -39,7 +39,7 @@
           :weatherDescription="city.weatherDescription"
           :valueIndex="city.valueIndex"
           :componentsList="city.componentsList"
-          :myTime="city.myTime"
+          :hour="city.hour"
           :main="city.main"
           :detailSeen="city.detailSeen"
           @deleteCity="deleteCity(index)"></city>
@@ -65,7 +65,7 @@
               {{cityName}}
             </div>
             <div class="main-info__country">
-              {{countryCode}}, {{myTime}}
+              {{countryCode}}, {{hour}}
             </div>
             <div class="main-info__temperature">
               {{temperature}}&deg

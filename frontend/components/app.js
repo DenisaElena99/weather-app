@@ -16,7 +16,7 @@ var App = {
         main: "",
         valueIndex: "",
         components: {},
-        myTime: "",
+        hour: 0,
         detailSeen: false,
       },
       newCity: {
@@ -28,8 +28,7 @@ var App = {
         main: "",
         valueIndex: "",
         componentsList: {},
-        myTime: "",
-        myUnixTime: 0,
+        hour: 0,
         detailSeen: false,
       },
       myWeatherCities: [],
@@ -44,12 +43,11 @@ var App = {
       try {
         const response = await fetch(URL);
         const data = await response.json();
-        this.currentCity.cityName = data.cityName;
-        // this.cities.unshift(this.currentCity.cityName);
-        // this.cities.push(this.currentCity.cityName);
-        this.myWeatherCities.push(data);
         var time = new Date();
-        this.currentCity.myTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+        data.hour = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+        // this.currentCity.cityName = data.cityName;
+        // this.cities.unshift({...this.currentCity.cityName});
+        this.myWeatherCities.unshift(data);
 
         // this.cities.push(this.currentCity);
 
@@ -66,17 +64,33 @@ var App = {
         const response = await fetch(URL);
         const data = await response.json();
         this.citySearch = "";
-        this.newCity = data;
+
+        let unix_timestamp = data.hour;
+        // Create a new JavaScript Date object based on the timestamp
+        // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+        var date = new Date(unix_timestamp * 1000);
+        var time = this.getHour(date)
+        data.hour = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+        // console.log(data.hour);
         this.myWeatherCities.push({...this.data});
       } catch (error) {
         console.log(error);
       }
 
-      this.getMyCities();
+      this.getMyCitiesInfo();
+    },
+
+    getHour(date) {
+      var hours = date.getHours();
+      var ampm = hours >= 12 ? 'pm' : 'am';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      var strTime = hours + ' ' + ampm;
+      return strTime;
     },
 
 
-    getMyCities() {
+    getMyCitiesInfo() {
       var res = "";
       const URL = `http://localhost:5000/api/city?q=`;
       const citiesDetails= this.cities.map(city =>
@@ -98,7 +112,7 @@ var App = {
     deleteCity(index) {
       this.cities.splice(index, 1);
 
-      this.getMyCities();
+      this.getMyCitiesInfo();
     },
   },
 
@@ -122,7 +136,8 @@ var App = {
 
   mounted() {
    this.$nextTick(function () {
-     this.getMyCities();
+     this.getCurrentWeather();
+     this.getMyCitiesInfo();
     })
   },
 };
