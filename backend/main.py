@@ -11,7 +11,7 @@ app = flask.Flask(__name__)
 CORS(app)
 
 
-API_KEY = '8a32fd121053564c34ba85f67b98ce2f'
+API_KEY = '9ec5e8e4bb0bdc6b69f0e8ce7daa9b4a'
 
 
 def current_location():
@@ -41,7 +41,6 @@ def get_weather(responseWeather, responseAirPollution):
     weather = responseWeather['weather']
     weather_description = weather[0]['description']
     main_weather = weather[0]['main']
-    timeOfTheDay = weather[0]['icon']
     main = responseWeather['main']
     feels_like_temperature = main['feels_like']
     list = responseAirPollution['list']
@@ -67,9 +66,7 @@ def get_weather(responseWeather, responseAirPollution):
         'temperature': current_temperature_celsius,
         'weatherDescription': weather_description,
         'feelsLikeTemperature': feels_like_temperature,
-        'airQualityIndex': airIndex,
         'valueIndex': value,
-        'timeOfTheDay': timeOfTheDay,
         'componentsList': componentsList,
         'hour': myUnixTime,
         'main': main_weather,
