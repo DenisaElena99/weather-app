@@ -1,7 +1,6 @@
 import flask
 import geocoder
-from flask import json
-from flask import jsonify
+import config
 from flask import Flask, request
 from flask_cors import CORS
 import requests
@@ -11,102 +10,61 @@ app = flask.Flask(__name__)
 CORS(app)
 
 
-API_KEY = '9ec5e8e4bb0bdc6b69f0e8ce7daa9b4a'
-
-
-def current_location():
-    myloc = geocoder.ip('me')
-    return myloc.latlng
-
-
-def get_air_index_value(airIndex):
+def get_air_index_value(air_index):
     value = None
-    if airIndex == 1:
+    if air_index == 1:
         value = 'Good'
-    if airIndex == 2:
+    if air_index == 2:
         value = 'Fair'
-    if airIndex == 3:
+    if air_index == 3:
         value = 'Moderate'
-    if airIndex == 4:
+    if air_index == 4:
         value = 'Poor'
-    if airIndex == 5:
+    if air_index == 5:
         value = 'Very Poor'
     return value
 
 
-def get_weather(responseWeather, responseAirPollution):
-    city = responseWeather['name']
-    sys = responseWeather['sys']
-    country_code = sys['country']
-    weather = responseWeather['weather']
-    weather_description = weather[0]['description']
-    main_weather = weather[0]['main']
-    main = responseWeather['main']
-    feels_like_temperature = main['feels_like']
-    list = responseAirPollution['list']
-    mainIndex = list[0]['main']
-    airIndex = mainIndex['aqi']
-    componentsList = list[0]['components']
-    myUnixTime = responseWeather['dt']
-    value = get_air_index_value(airIndex)
-
-    if responseWeather['cod'] != 200:
-        message = responseWeather.get('message', '')
-        return f'Error getting temperature for {city}. Error message = {message}'
-
-    current_temperature = main['temp']
-
-    if current_temperature:
-        current_temperature_celsius = int(current_temperature - 273.15)
-        feels_like_temperature = int(feels_like_temperature - 273.15)
-
-    DATA = {
-        'cityName': city,
-        'countryCode': country_code,
-        'temperature': current_temperature_celsius,
-        'weatherDescription': weather_description,
-        'feelsLikeTemperature': feels_like_temperature,
-        'valueIndex': value,
-        'componentsList': componentsList,
-        'hour': myUnixTime,
-        'main': main_weather,
+def get_weather(response_weather, response_air_pollution):
+    city_data = {
+        'cityName': response_weather['name'],
+        'countryCode': response_weather['sys']['country'],
+        'temperature': int(response_weather['main']['temp'] - 273.15),
+        'feelsLikeTemperature': int(response_weather['main']['feels_like'] - 273.15),
+        'weatherDescription': response_weather['weather'][0]['description'],
+        'airIndexValue': get_air_index_value(response_air_pollution['list'][0]['main']['aqi']),
+        'componentsList': response_air_pollution['list'][0]['components'],
+        'mainWeatherDescription': response_weather['weather'][0]['main'],
     }
-    return DATA
+    return city_data
 
 
-@app.route('/api/city')
+@app.route('/api/city_name')
 def get_city():
-    city = request.args.get('q')
-    print(city)
-    urlWeather = f'http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={API_KEY}'
-    responseWeather = requests.get(urlWeather).json()
-    if responseWeather['cod'] != 200:
-        message = responseWeather.get('message', '')
-        return f'Error getting data for {city}. Error message = {message}'
-    print(responseWeather)
-    coordinates = responseWeather['coord']
+    city = request.args.get('name')
+    weatherUrl = f'http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={config.API_KEY}'
+    response_weather = requests.get(weatherUrl).json()
+    coordinates = response_weather['coord']
     lat = coordinates['lat']
     lon = coordinates['lon']
-    urlAirPollution = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API_KEY}'
-    responseAirPollution = requests.get(urlAirPollution).json()
-    DATA = get_weather(responseWeather, responseAirPollution)
-    return DATA
+    airPollutionUrl = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={config.API_KEY}'
+    response_air_pollution = requests.get(airPollutionUrl).json()
+    city_data = get_weather(response_weather, response_air_pollution)
+    return city_data
 
 
 @app.route('/api/currentCity')
 def index():
-    coordinates = current_location();
+    currentLocation = geocoder.ip('me')
+    coordinates = currentLocation.latlng
     lat = coordinates[0]
     lon = coordinates[1]
-    urlWeather = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&APPID={API_KEY}'
-    urlAirPollution = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API_KEY}'
-    responseWeather = requests.get(urlWeather).json()
-    if responseWeather['cod'] != 200:
-        message = responseWeather.get('message', '')
-        return f'Error getting data  for {city}. Error message = {message}'
-    responseAirPollution = requests.get(urlAirPollution).json()
-    DATA = get_weather(responseWeather, responseAirPollution)
-    return DATA
+    weatherUrl = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&APPID={config.API_KEY}'
+    airPollutionUrl = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={config.API_KEY}'
+    response_weather = requests.get(weatherUrl).json()
+    response_air_pollution = requests.get(airPollutionUrl).json()
+    city_data = get_weather(response_weather, response_air_pollution)
+    return city_data
 
 
 if __name__ == '__main__':
