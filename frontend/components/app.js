@@ -14,8 +14,8 @@ var App = {
         feelsLikeTemperature: 0,
         temperature: 0,
         weatherDescription: "",
-        main: "",
-        valueIndex: "",
+        mainWeatherDescription: "",
+        airIndexValue: "",
         components: {},
         hour: 0,
         detailSeen: true,
@@ -40,7 +40,7 @@ var App = {
     },
 
     getSearchCityWeather: async function () {
-      const URL = `http://localhost:5000/api/city?q=${this.citySearch}`;
+      const URL = `http://localhost:5000/api/city_name?name=${this.citySearch}`;
       this.cities.push(this.citySearch);
       try {
         const response = await fetch(URL);
@@ -55,7 +55,7 @@ var App = {
 
     getMyCitiesInfo() {
       var res = "";
-      const URL = `http://localhost:5000/api/city?q=`;
+      const URL = `http://localhost:5000/api/city_name?name=`;
       const citiesDetails = this.cities.map(city =>
         fetch(`${URL}${city}`, { method: "GET" }).then(res => res.json())
       );
@@ -63,12 +63,10 @@ var App = {
         .all(citiesDetails)
         .then(citiesData => {
           this.myWeatherCities = citiesData;
-          console.log(this.myWeatherCities);
         })
         .catch(error => {
           console.log(error);
         });
-        console.log(this.cities);
     },
 
     deleteCity(index) {

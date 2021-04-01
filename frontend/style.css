@@ -21,7 +21,7 @@
 html, body {
   font-size: 15px;
   font-family: 'DINNextLTPro';
-  background-image: #f3f8ff;
+  background-color: #f3f8ff;
 }
 
 
@@ -31,10 +31,7 @@ input, button {
 
 
 .container {
-  display: flex;
   margin: auto;
-  flex-wrap: wrap;
-  flex-direction: column;
   max-width: 900px;
 }
 
@@ -62,34 +59,60 @@ input, button {
 }
 
 
-.search-bar {
+.search-location {
   display: flex;
   padding-bottom: 2.5rem;
 }
 
+/* .search-bar {
+  display: flex;
+  padding-bottom: 2.5rem;
+} */
 
 input[type="text"] {
   color: #2C0B42;
   width: 100%;
   font-size: 1.5rem;
   padding: 0.6rem;
-  border: 2px solid black;
-  border: 0.5px solid #c8c8c8;
+  border: 1px solid #c8c8c8;
   box-shadow: 4px 4px 9px #cfcdcf;
 }
+
 
 
 .card-item {
   font-size: 1.2rem;
-  color: #ffffff;
-  border: none;
-  background-image: linear-gradient(to bottom right, #b9d5f7, #87b0db);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: 4px 4px 9px #cfcdcf;
+  box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
 }
 
 
-.main-info {
+.clear-sky-few-clouds {
+  background-image: linear-gradient(to bottom right, #b9d5f7, #87b0db);
+  color: #ffffff;
+}
+
+
+.clouds {
+  background-image: linear-gradient(to bottom right, #60798c, #8fb2d5);
+  color: #ffffff;
+}
+
+
+.rain-thunderstorm {
+  background-image: linear-gradient(to bottom right, #3b4045, #7087a0);
+  color: #ffffff;
+}
+
+
+.snow-mist {
+  background-image: linear-gradient(to bottom right, #f0f7fe, #c2dffd);
+  color: #272727;
+}
+
+
+.card-item .main-info {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -97,28 +120,27 @@ input[type="text"] {
 
 
 .main-info__img-weather {
-  margin: -1rem -0.2rem -1rem 0rem;
+  margin: -2rem 0rem -1rem -1rem;
 }
 
 
 .main-info__city-name {
   font-weight: 600;
-  font-size: 2.9rem;
+  font-size: 3.5rem;
   padding-right: 1rem;
+  align-self: center;
 }
 
 
 .main-info__country {
   font-weight: bold;
   font-size: 1.5rem;
-  margin-bottom: -0.5rem;
+  margin-bottom: -1rem;
 }
 
 
 .main-info__temperature {
   margin-left: auto;
-  padding-top: 2rem;
-  padding-right: 1.5rem;
   font-weight: 600;
   font-size: 4rem;
 }
@@ -126,11 +148,10 @@ input[type="text"] {
 
 .main-info__close-button {
   display: none;
-  width: 1.5rem;
-  height: 1.5rem;
   margin-right: -3rem;
-  padding-left: 1.5rem;
-  padding-bottom: 2.5rem;
+  padding-left: 3rem;
+  padding-bottom: 4rem;
+  cursor: pointer;
 }
 
 
@@ -159,7 +180,7 @@ input[type="text"] {
 }
 
 
-.extra-info {
+.card-item .extra-info {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -170,56 +191,57 @@ input[type="text"] {
   flex: 1;
   text-align: left;
   font-size: 1.5rem;
-  padding-left: 1rem;
   margin-top: 0.5rem;
+  text-transform: capitalize;
 }
 
 
 .extra-info__feels-like {
   flex: 1;
   text-align: right;
-  padding-right: 1.5rem;
   margin-top: 0.5rem;
   font-size: 1.5rem;
 }
 
 
-.air-quality {
-  display: flex;
-}
-
-
 .air-quality__air-description {
-  width: 100%;
-  text-align: left;
-  padding-left: 1rem;
   font-size: 1.5rem;
 }
 
 
-.details {
+.card-item .details-toggle {
   display: flex;
   justify-content: center;
-  padding-bottom: 1rem;
 }
 
 
-.details--show {
+.details-toggle__icon--show {
   height: 0.6rem;
   width: 0.6rem;
   border-style: solid;
   border-color: white;
   border-width: 0px 3px 3px 0px;
   transform: rotate(-135deg);
-  margin-top: -0.5rem;
+  margin-top: -1rem;
+  cursor: pointer;
+}
+
+
+.details-toggle__icon--hide {
+  height: 0.6rem;
+  width: 0.6rem;
+  border-style: solid;
+  border-color: white;
+  border-width: 0px 3px 3px 0px;
+  transform: rotate(45deg);
+  margin-top: -1rem;
+  cursor: pointer;
 }
 
 
 .card-item-details {
-  display: flex;
-  color: #black;
-  border: none;
   background: #ffffff;
+  padding: 1rem;
   box-shadow: 4px 4px 9px #cfcdcf;
 }
 
@@ -228,7 +250,7 @@ input[type="text"] {
   border-collapse: collapse;
   width: 100%;
   font-size: 1.1rem;
-  margin: 0.8rem 1rem 1rem 1rem;
+  margin: 1rem;
 }
 
 

@@ -8,8 +8,8 @@ var City = {
     temperature: Number,
     timeOftheDay: String,
     weatherDescription: String,
-    main: String,
-    valueIndex: String,
+    mainWeatherDescription: String,
+    airIndexValue: String,
     componentsList: Object,
     hour: String,
     index: Number,
@@ -22,13 +22,13 @@ var City = {
     },
 
     getWeatherBackground() {
-      if (this.main == "Clear") {
+      if (this.mainWeatherDescription == "Clear") {
         return "clear-sky-few-clouds"
-      } else if (this.main == "Clouds") {
+      } else if (this.mainWeatherDescription == "Clouds") {
         return "clouds"
-      } else if (this.main == "Thunderstorm" || this.main == "Rain") {
+      } else if (this.mainWeatherDescription == "Thunderstorm" || this.mainWeatherDescription == "Rain") {
         return "rain-thunderstorm"
-      } else if (this.main == "Snow" || this.main == "Mist") {
+      } else if (this.mainWeatherDescription == "Snow" || this.mainWeatherDescription == "Mist") {
         return "snow-mist"
       }
       return "unknown"

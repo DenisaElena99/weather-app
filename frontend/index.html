@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>sunnyday</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="components/app.css">
-    <link rel="stylesheet" href="components/city.css">
   </head>
   <body>
     <div class="container">
@@ -36,10 +33,10 @@
           :feelsLikeTemperature="currentCity.feelsLikeTemperature"
           :temperature="currentCity.temperature"
           :weatherDescription="currentCity.weatherDescription"
-          :valueIndex="currentCity.valueIndex"
+          :airIndexValue="currentCity.airIndexValue"
           :componentsList="currentCity.componentsList"
           :hour="currentCity.hour"
-          :main="currentCity.main"
+          :mainWeatherDescription="currentCity.mainWeatherDescription"
           :detailSeen="currentCity.detailSeen"
           :hideDeleteButton=true
         ></city>
@@ -50,10 +47,10 @@
           :feelsLikeTemperature="city.feelsLikeTemperature"
           :temperature="city.temperature"
           :weatherDescription="city.weatherDescription"
-          :valueIndex="city.valueIndex"
+          :airIndexValue="city.airIndexValue"
           :componentsList="city.componentsList"
           :hour="city.hour"
-          :main="city.main"
+          :mainWeatherDescription="city.mainWeatherDescription"
           :detailSeen="city.detailSeen"
           @deleteCity="deleteCity(index)"></city>
         </div>
@@ -65,14 +62,14 @@
         <div class="card-item" :class="getWeatherBackground()">
           <div class="main-info">
             <div class="main-info__img-weather">
-              <img src="img/01d.png" v-if="main === 'Clear'">
-              <img src="img/04d.png" v-if="main === 'Clouds'">
-              <img src="img/10d.png" v-if="main === 'Rain'">
-              <img src="img/11d.png" v-if="main === 'Thunderstorm'">
-              <img src="img/13d.png" v-if="main === 'Snow'">
-              <img src="img/50d.png" v-if="main === 'Mist'">
-              <img src="img/50d.png" v-if="main === 'Haze'">
-              <img src="img/50d.png" v-if="main === 'Dust'">
+              <img src="img/01d.png" v-if="mainWeatherDescription === 'Clear'">
+              <img src="img/04d.png" v-if="mainWeatherDescription === 'Clouds'">
+              <img src="img/10d.png" v-if="mainWeatherDescription === 'Rain'">
+              <img src="img/11d.png" v-if="mainWeatherDescription === 'Thunderstorm'">
+              <img src="img/13d.png" v-if="mainWeatherDescription === 'Snow'">
+              <img src="img/50d.png" v-if="mainWeatherDescription === 'Mist'">
+              <img src="img/50d.png" v-if="mainWeatherDescription === 'Haze'">
+              <img src="img/50d.png" v-if="mainWeatherDescription === 'Dust'">
             </div>
             <div class="main-info__city-name">
               {{cityName}}
@@ -96,13 +93,13 @@
           </div>
           <div class="air-quality">
             <div class="air-quality__air-description">
-              {{valueIndex}} air quality
+              {{airIndexValue}} air quality
             </div>
           </div>
-          <div class="details">
-            <div class="details--show" v-on:click="detailSeen = !detailSeen" v-if="detailSeen">
+          <div class="details-toggle">
+            <div class="details-toggle__icon details-toggle__icon--show" v-on:click="detailSeen = !detailSeen" v-if="detailSeen">
             </div>
-            <div class="details--hide" v-on:click="detailSeen = !detailSeen" v-if="!detailSeen">
+            <div class="details-toggle__icon details-toggle__icon--hide" v-on:click="detailSeen = !detailSeen" v-if="!detailSeen">
             </div>
           </div>
         </div>
