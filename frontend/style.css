@@ -152,11 +152,13 @@ input, button {
   display: none;
   position: absolute;
   right: -4rem;
-  top: 0rem;
+  top: -1rem;
+  padding: 1rem;
   cursor: pointer;
   background-color: transparent;
   border: none;
-  outline :none;
+  outline: none;
+  overflow: hidden;
 }
 
 
