@@ -25,15 +25,16 @@ const App = {
   },
 
   methods: {
-
     getCurrentWeather: async function () {
       const URL = `http://localhost:5000/api/currentCity`;
       try {
         const response = await fetch(URL);
-        const data = await response.json();
-        var time = new Date();
-        data.hour = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
-        this.currentCity = data;
+        if (response.status == 200) {
+          const data = await response.json();
+          var time = new Date();
+          data.hour = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+          this.currentCity = data;
+        }
       } catch (error) {
         console.log(error);
       }
@@ -41,12 +42,16 @@ const App = {
 
     getSearchCityWeather: async function () {
       const URL = `http://localhost:5000/api/city_name?name=${this.citySearch}`;
-      this.cityNames.push(this.citySearch);
       try {
         const response = await fetch(URL);
-        const data = await response.json();
-        this.citySearch = "";
-        this.cityWeather.push({...data});
+        if (response.status == 200) {
+          const data = await response.json();
+          if (typeof(data) == 'object') {
+            this.cityNames.push(this.citySearch);
+            this.citySearch = "";
+            this.cityWeather.push({...data});
+          }
+        }
       } catch (error) {
         console.log(error);
       }
@@ -91,7 +96,7 @@ const App = {
   },
 
   mounted() {
-    this.getCurrentWeather();
-    this.getCityWeather();
+   this.getCurrentWeather();
+   this.getCityWeather();
   },
 };

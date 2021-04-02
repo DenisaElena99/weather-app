@@ -13,9 +13,15 @@ const City = {
     componentsList: Object,
     hour: String,
     index: Number,
-    detailSeen: Boolean,
     hideDeleteButton: Boolean,
   },
+
+  data() {
+    return {
+      detailSeen: false,
+    };
+  },
+
   methods: {
     deleteCity(index) {
       this.$emit('deleteCity', this.cityName)
@@ -26,9 +32,21 @@ const City = {
         return "clear-sky-few-clouds"
       } else if (this.mainWeatherDescription == "Clouds") {
         return "clouds"
-      } else if (this.mainWeatherDescription == "Thunderstorm" || this.mainWeatherDescription == "Rain") {
+      } else if (
+        this.mainWeatherDescription == "Thunderstorm" ||
+        this.mainWeatherDescription == "Rain") {
         return "rain-thunderstorm"
-      } else if (this.mainWeatherDescription == "Snow" || this.mainWeatherDescription == "Mist") {
+      } else if (
+        this.mainWeatherDescription == "Snow" ||
+        this.mainWeatherDescription == "Mist" ||
+        this.mainWeatherDescription == "Haze" ||
+        this.mainWeatherDescription == "Dust" ||
+        this.mainWeatherDescription == "Smoke" ||
+        this.mainWeatherDescription == "Fog" ||
+        this.mainWeatherDescription == "Sand" ||
+        this.mainWeatherDescription == "Ash" ||
+        this.mainWeatherDescription == "Squall" ||
+        this.mainWeatherDescription == "Tornado") {
         return "snow-mist"
       }
       return "unknown"

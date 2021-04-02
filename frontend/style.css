@@ -75,7 +75,6 @@ input, button {
 }
 
 
-
 .city .city__card {
   font-size: 1.2rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -84,18 +83,18 @@ input, button {
 }
 
 
-
-
 .city .city__card .main-info {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  position: relative;
 }
 
 
 .city .city__card .main-info .main-info__img-weather {
   margin: -2rem 0rem -1rem -1rem;
 }
+
 
 .city .clear-sky-few-clouds {
   background-image: linear-gradient(to bottom right, #b9d5f7, #87b0db);
@@ -151,12 +150,13 @@ input, button {
 
 .city .city__card .main-info .main-info__close-button {
   display: none;
-  margin-right: -4rem;
-  padding-left: 4rem;
-  padding-bottom: 4rem;
+  position: absolute;
+  right: -4rem;
+  top: 0rem;
   cursor: pointer;
   background-color: transparent;
   border: none;
+  outline :none;
 }
 
 
@@ -165,7 +165,7 @@ input, button {
   content: ' ';
   height: 1rem;
   width: 0.2rem;
-  margin-right: -2rem;
+  margin-right: -4rem;
   background-color: black;
 }
 
@@ -255,7 +255,6 @@ input, button {
   border-collapse: collapse;
   width: 100%;
   font-size: 1.1rem;
-  margin: 1rem;
 }
 
 
@@ -279,5 +278,5 @@ input, button {
   padding-bottom: 0.9rem;
   text-align: left;
   border-bottom: 1px solid black;
-  color: black;
+  color: #000000;
 }

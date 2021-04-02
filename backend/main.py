@@ -43,14 +43,25 @@ def get_weather(response_weather, response_air_pollution):
 def get_city():
     city = request.args.get('name')
     weatherUrl = f'http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={config.API_KEY}'
-    response_weather = requests.get(weatherUrl).json()
-    coordinates = response_weather['coord']
-    lat = coordinates['lat']
-    lon = coordinates['lon']
-    airPollutionUrl = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={config.API_KEY}'
-    response_air_pollution = requests.get(airPollutionUrl).json()
-    city_data = get_weather(response_weather, response_air_pollution)
-    return city_data
+    response_weather_url = requests.get(weatherUrl)
+    if response_weather_url.status_code == 200:
+        try:
+            response_weather = response_weather_url.json()
+            coordinates = response_weather['coord']
+            lat = coordinates['lat']
+            lon = coordinates['lon']
+            airPollutionUrl = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={config.API_KEY}'
+            response_air_pollution_url = requests.get(airPollutionUrl)
+            if response_air_pollution_url.status_code == 200:
+                try:
+                    response_air_pollution = response_air_pollution_url.json()
+                    city_data = get_weather(response_weather, response_air_pollution)
+                    return city_data
+                except ValueError:
+                    return str(response_air_pollution_url.status_code)
+        except ValueError:
+            return str(response_weather_url.status_code)
+    return str(response_weather_url.status_code)
 
 
 @app.route('/api/currentCity')
@@ -60,9 +71,19 @@ def index():
     lat = coordinates[0]
     lon = coordinates[1]
     weatherUrl = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&APPID={config.API_KEY}'
+    response_weather_url = requests.get(weatherUrl)
+    if response_weather_url.status_code == 200:
+        try:
+            response_weather = response_weather_url.json()
+        except ValueError:
+            return ValueError
     airPollutionUrl = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={config.API_KEY}'
-    response_weather = requests.get(weatherUrl).json()
-    response_air_pollution = requests.get(airPollutionUrl).json()
+    response_air_pollution_url = requests.get(airPollutionUrl)
+    if response_weather_url.status_code == 200:
+        try:
+            response_air_pollution = response_air_pollution_url.json()
+        except ValueError:
+            return ValueError
     city_data = get_weather(response_weather, response_air_pollution)
     return city_data
 
