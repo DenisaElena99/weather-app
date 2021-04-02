@@ -18,7 +18,7 @@
     </div>
 
     <script type="text/x-template" id="template--app">
-      <div>
+      <div class="app">
         <div class="search-location" v-on:keyup.enter="getSearchCityWeather">
           <input
             type="text"
@@ -40,7 +40,7 @@
           :detailSeen="currentCity.detailSeen"
           :hideDeleteButton=true
         ></city>
-        <div v-for="(city, index) in myWeatherCities" :key="city.cityName">
+        <div v-for="(city, index) in cityWeather" :key="city.cityName">
           <city
           :cityName="city.cityName"
           :countryCode="city.countryCode"
@@ -58,8 +58,8 @@
     </script>
 
     <script type="text/x-template" id="template--city">
-      <div>
-        <div class="card-item" :class="getWeatherBackground()">
+      <div class="city">
+        <div class="city__card" :class="getWeatherBackgroundClass()">
           <div class="main-info">
             <div class="main-info__img-weather">
               <img src="img/01d.png" v-if="mainWeatherDescription === 'Clear'">
@@ -67,9 +67,17 @@
               <img src="img/10d.png" v-if="mainWeatherDescription === 'Rain'">
               <img src="img/11d.png" v-if="mainWeatherDescription === 'Thunderstorm'">
               <img src="img/13d.png" v-if="mainWeatherDescription === 'Snow'">
-              <img src="img/50d.png" v-if="mainWeatherDescription === 'Mist'">
-              <img src="img/50d.png" v-if="mainWeatherDescription === 'Haze'">
-              <img src="img/50d.png" v-if="mainWeatherDescription === 'Dust'">
+              <img src="img/50d.png" v-if="mainWeatherDescription === 'Mist' ||
+                 mainWeatherDescription === 'Haze' ||
+                 mainWeatherDescription === 'Dust' ||
+                 mainWeatherDescription === 'Smoke' ||
+                 mainWeatherDescription === 'Haze' ||
+                 mainWeatherDescription === 'Dust' ||
+                 mainWeatherDescription === 'Fog' ||
+                 mainWeatherDescription === 'Sand' ||
+                 mainWeatherDescription === 'Ash' ||
+                 mainWeatherDescription === 'Squall' ||
+                 mainWeatherDescription === 'Tornado'">
             </div>
             <div class="main-info__city-name">
               {{cityName}}
@@ -78,17 +86,17 @@
               {{countryCode}}, {{hour}}
             </div>
             <div class="main-info__temperature">
-              {{temperature}}&deg
+              {{temperature}}&deg;
             </div>
-            <div class="main-info__close-button" v-if="!hideDeleteButton" @click="deleteCity(index)">
-            </div>
+            <button class="main-info__close-button" v-if="!hideDeleteButton" @click="deleteCity(index)">
+            </button>
           </div>
           <div class="extra-info">
             <div class="extra-info__weather-description">
               {{weatherDescription}}
             </div>
             <div class="extra-info__feels-like">
-              Feels like {{feelsLikeTemperature}}&deg
+              Feels like {{feelsLikeTemperature}}&deg;
             </div>
           </div>
           <div class="air-quality">
@@ -103,8 +111,8 @@
             </div>
           </div>
         </div>
-        <div class="card-item-details" v-if="detailSeen">
-          <table class="card-item-details__table">
+        <div class="city__details" v-if="detailSeen">
+          <table class="city__details-table">
               <tr>
                 <th>Air pollution component</th>
                 <th>Concentration</th>

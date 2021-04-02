@@ -1,12 +1,12 @@
-var App = {
+const App = {
   template: '#template--app',
   components: {
     'city': City
   },
   data() {
     return {
-      cities : [],
-      myWeatherCities: [],
+      cityNames : [],
+      cityWeather: [],
       citySearch: "",
       currentCity: {
         cityName: "",
@@ -17,7 +17,7 @@ var App = {
         mainWeatherDescription: "",
         airIndexValue: "",
         components: {},
-        hour: 0,
+        hour: "",
         detailSeen: true,
         hideDeleteButton: true,
       },
@@ -41,28 +41,28 @@ var App = {
 
     getSearchCityWeather: async function () {
       const URL = `http://localhost:5000/api/city_name?name=${this.citySearch}`;
-      this.cities.push(this.citySearch);
+      this.cityNames.push(this.citySearch);
       try {
         const response = await fetch(URL);
         const data = await response.json();
         this.citySearch = "";
-        this.myWeatherCities.push({...data});
+        this.cityWeather.push({...data});
       } catch (error) {
         console.log(error);
       }
-      this.getMyCitiesInfo();
+      this.getCityWeather();
     },
 
-    getMyCitiesInfo() {
+    getCityWeather() {
       var res = "";
       const URL = `http://localhost:5000/api/city_name?name=`;
-      const citiesDetails = this.cities.map(city =>
+      const citiesDetails = this.cityNames.map(city =>
         fetch(`${URL}${city}`, { method: "GET" }).then(res => res.json())
       );
       Promise
         .all(citiesDetails)
         .then(citiesData => {
-          this.myWeatherCities = citiesData;
+          this.cityWeather = citiesData;
         })
         .catch(error => {
           console.log(error);
@@ -70,13 +70,13 @@ var App = {
     },
 
     deleteCity(index) {
-      this.cities.splice(index, 1);
-      this.getMyCitiesInfo();
+      this.cityNames.splice(index, 1);
+      this.getCityWeather();
     },
   },
 
   watch: {
-    cities: {
+    cityNames: {
       handler(newCities) {
         window.localStorage.setItem('city-list', JSON.stringify(newCities));
       },
@@ -86,14 +86,12 @@ var App = {
 
   beforeMount() {
      if (window.localStorage.getItem('city-list')) {
-       this.cities = JSON.parse(window.localStorage.getItem('city-list' || '[]'));
+       this.cityNames = JSON.parse(window.localStorage.getItem('city-list' || '[]'));
      }
   },
 
   mounted() {
-   this.$nextTick(function () {
-     this.getCurrentWeather();
-     this.getMyCitiesInfo();
-   });
+    this.getCurrentWeather();
+    this.getCityWeather();
   },
 };

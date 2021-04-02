@@ -1,4 +1,4 @@
-var weatherApp = new Vue({
+new Vue({
   el: '.container',
   components: {
     'app': App

@@ -1,4 +1,4 @@
-var City = {
+const City = {
   template: '#template--city',
   props:
   {
@@ -21,7 +21,7 @@ var City = {
       this.$emit('deleteCity', this.cityName)
     },
 
-    getWeatherBackground() {
+    getWeatherBackgroundClass() {
       if (this.mainWeatherDescription == "Clear") {
         return "clear-sky-few-clouds"
       } else if (this.mainWeatherDescription == "Clouds") {
