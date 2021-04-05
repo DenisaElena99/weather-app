@@ -168,7 +168,7 @@ input, button {
   height: 1rem;
   width: 0.2rem;
   margin-right: -4rem;
-  background-color: black;
+  background-color: #000000;
 }
 
 
@@ -211,7 +211,7 @@ input, button {
 }
 
 
-.city .city__card .air-quality .air-quality__air-description {
+.city .city__card .air-quality {
   font-size: 1.5rem;
 }
 

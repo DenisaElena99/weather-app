@@ -68,15 +68,15 @@
               <img src="img/11d.png" v-if="mainWeatherDescription === 'Thunderstorm'">
               <img src="img/13d.png" v-if="mainWeatherDescription === 'Snow'">
               <img src="img/50d.png" v-if="mainWeatherDescription === 'Mist' ||
-                 mainWeatherDescription === 'Haze' ||
-                 mainWeatherDescription === 'Dust' ||
-                 mainWeatherDescription === 'Smoke' ||
-                 mainWeatherDescription === 'Haze' ||
-                 mainWeatherDescription === 'Fog' ||
-                 mainWeatherDescription === 'Sand' ||
-                 mainWeatherDescription === 'Ash' ||
-                 mainWeatherDescription === 'Squall' ||
-                 mainWeatherDescription === 'Tornado'">
+                mainWeatherDescription === 'Haze' ||
+                mainWeatherDescription === 'Dust' ||
+                mainWeatherDescription === 'Smoke' ||
+                mainWeatherDescription === 'Haze' ||
+                mainWeatherDescription === 'Fog' ||
+                mainWeatherDescription === 'Sand' ||
+                mainWeatherDescription === 'Ash' ||
+                mainWeatherDescription === 'Squall' ||
+                mainWeatherDescription === 'Tornado'">
             </div>
             <div class="main-info__city-name">
               {{cityName}}
@@ -99,9 +99,7 @@
             </div>
           </div>
           <div class="air-quality">
-            <div class="air-quality__air-description">
-              {{airIndexValue}} air quality
-            </div>
+            {{airIndexValue}} air quality
           </div>
           <div class="details-toggle">
             <div class="details-toggle__icon details-toggle__icon--show" v-on:click="detailSeen = !detailSeen" v-if="detailSeen">
