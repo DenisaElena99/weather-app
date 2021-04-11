@@ -31,7 +31,4 @@ api.openweathermap.org/data/2.5/weather?q=${this.citySearch}&appid={API key}
 http://api.openweathermap.org/data/2.5/air_pollution?lat=${this.lat}&lon=${this.lon}&appid={API key}
 ```
 
-# HTML body should have:
- - Changing background depending on the local time of each city by the icon field of the API used. When we see the letter ‘n’ means that is night, so the background will be dark, otherwise it will be a lighter one
-
 
