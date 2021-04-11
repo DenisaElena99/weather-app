@@ -12,3 +12,5 @@ When you run the application for the first time, it automatically generates the 
 * flask
 * flask-cors
 * geocoder
+
+Used <code>https://openweathermap.org/api </code>
