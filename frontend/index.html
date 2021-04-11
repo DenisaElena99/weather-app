@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>sunnyday</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header__logo">
+        </div>
+        <div class="header__app-name">
+          sunnyday
+        </div>
+      </div>
+      <app></app>
+    </div>
+
+    <script type="text/x-template" id="template--app">
+      <div class="app">
+        <div class="search-location" v-on:keyup.enter="getSearchCityWeather">
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="Enter your city here..."
+            v-model="citySearch"
+          />
+        </div>
+        <city
+          :cityName="currentCity.cityName"
+          :countryCode="currentCity.countryCode"
+          :feelsLikeTemperature="currentCity.feelsLikeTemperature"
+          :temperature="currentCity.temperature"
+          :weatherDescription="currentCity.weatherDescription"
+          :airIndexValue="currentCity.airIndexValue"
+          :componentsList="currentCity.componentsList"
+          :hour="currentCity.hour"
+          :mainWeatherDescription="currentCity.mainWeatherDescription"
+          :detailSeen="currentCity.detailSeen"
+          :hideDeleteButton=true
+        ></city>
+        <div v-for="(city, index) in cityWeather" :key="city.cityName">
+          <city
+          :cityName="city.cityName"
+          :countryCode="city.countryCode"
+          :feelsLikeTemperature="city.feelsLikeTemperature"
+          :temperature="city.temperature"
+          :weatherDescription="city.weatherDescription"
+          :airIndexValue="city.airIndexValue"
+          :componentsList="city.componentsList"
+          :hour="city.hour"
+          :mainWeatherDescription="city.mainWeatherDescription"
+          :detailSeen="city.detailSeen"
+          @deleteCity="deleteCity(index)"></city>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/x-template" id="template--city">
+      <div class="city">
+        <div class="city__card" :class="getWeatherBackgroundClass()">
+          <div class="main-info">
+            <div class="main-info__img-weather">
+              <img src="img/01d.png" v-if="mainWeatherDescription === 'Clear'">
+              <img src="img/04d.png" v-if="mainWeatherDescription === 'Clouds'">
+              <img src="img/10d.png" v-if="mainWeatherDescription === 'Rain'">
+              <img src="img/11d.png" v-if="mainWeatherDescription === 'Thunderstorm'">
+              <img src="img/13d.png" v-if="mainWeatherDescription === 'Snow'">
+              <img src="img/50d.png" v-if="mainWeatherDescription === 'Mist' ||
+                mainWeatherDescription === 'Haze' ||
+                mainWeatherDescription === 'Dust' ||
+                mainWeatherDescription === 'Smoke' ||
+                mainWeatherDescription === 'Haze' ||
+                mainWeatherDescription === 'Fog' ||
+                mainWeatherDescription === 'Sand' ||
+                mainWeatherDescription === 'Ash' ||
+                mainWeatherDescription === 'Squall' ||
+                mainWeatherDescription === 'Tornado'">
+            </div>
+            <div class="main-info__city-name">
+              {{cityName}}
+            </div>
+            <div class="main-info__country">
+              {{countryCode}}, {{hour}}
+            </div>
+            <div class="main-info__temperature">
+              {{temperature}}&deg;
+            </div>
+            <button class="main-info__close-button" v-if="!hideDeleteButton" @click="deleteCity(index)">
+            </button>
+          </div>
+          <div class="extra-info">
+            <div class="extra-info__weather-description">
+              {{weatherDescription}}
+            </div>
+            <div class="extra-info__feels-like">
+              Feels like {{feelsLikeTemperature}}&deg;
+            </div>
+          </div>
+          <div class="air-quality">
+            {{airIndexValue}} air quality
+          </div>
+          <div class="details-toggle">
+            <div class="details-toggle__icon details-toggle__icon--show" v-on:click="detailSeen = !detailSeen" v-if="detailSeen">
+            </div>
+            <div class="details-toggle__icon details-toggle__icon--hide" v-on:click="detailSeen = !detailSeen" v-if="!detailSeen">
+            </div>
+          </div>
+        </div>
+        <div class="city__details" v-if="detailSeen">
+          <table class="city__details-table">
+              <tr>
+                <th>Air pollution component</th>
+                <th>Concentration</th>
+              </tr>
+              <tr>
+                <td>CO</td>
+                <td>{{componentsList.co}} μg/m<sup>3</sup></td>
+              </tr>
+              <tr>
+                <td>NH<sub>3</sub></td>
+                <td>{{componentsList.nh3}} μg/m<sup>3</sup></td>
+              </tr>
+              <tr>
+                <td>NO</td>
+                <td>{{componentsList.no}} μg/m<sup>3</sup></td>
+              </tr>
+              <tr>
+                <td>NO<sub>2</sub></td>
+                <td>{{componentsList.no2}} μg/m<sup>3</sup></td>
+              </tr>
+              <tr>
+                <td>O<sub>3</sub></td>
+                <td>{{componentsList.o3}} μg/m<sup>3</sup></td>
+              </tr>
+              <tr>
+                <td>PM<sub>2.5</sub></td>
+                <td>{{componentsList.pm2_5}} μg/m<sup>3</sup></td>
+              </tr>
+              <tr>
+                <td>PM<sub>10</sub></td>
+                <td>{{componentsList.pm10}} μg/m<sup>3</sup></td>
+              </tr>
+              <tr>
+                <td>SO<sub>2</sub></td>
+                <td>{{componentsList.so2}} μg/m<sup>3</sup></td>
+              </tr>
+          </table>
+        </div>
+        <br>
+        <br>
+      </div>
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="components/city.js"></script>
+  <script src="components/app.js"></script>
+  <script src="index.js"></script>
+  </body>
+</html>
